@@ -22,9 +22,8 @@ class Index extends CI_Controller
         $this->load->library('base_library');
         // Cookie helper
         $this->load->helper('cookie');
-        $this->load->model('front/propertyDetails_model');
-        $this->load->model('admin/type/ae_rel_community_list_model');
-        $this->load->model('admin/type/ae_rel_propery_type_model');
+        $this->load->model('front/propertyDetails_model'); 
+        
      }
 
 
