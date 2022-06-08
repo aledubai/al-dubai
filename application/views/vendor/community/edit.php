@@ -100,7 +100,7 @@
                         </div><!-- /.box-body -->
     
                         <div class="box-footer">
-                            <input type="hidden" name="id" value="<?php echo $edit_data->id; ?>"/>
+                            <input type="hidden" id="id" name="id" value="<?php echo $edit_data->id; ?>"/>
                             <input type="submit" class="btn btn-primary" value="Submit" id="submit" />
                             <input type="reset" class="btn btn-default" value="Reset" />
                         </div>
