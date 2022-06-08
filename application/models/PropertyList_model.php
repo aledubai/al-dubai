@@ -303,6 +303,7 @@ class PropertyList_model extends Base_model
             $bed=$propertyListData['bed'];
             $bath=$propertyListData['bath'];
             $type=$propertyListData['type'];
+            $community=$propertyListData['community'];
             //Search Ends
             //Commercial Search Starts
             $cityCom=$propertyListData['cityCom'];
@@ -394,6 +395,12 @@ class PropertyList_model extends Base_model
             {
              
                         $this->db->where('property.type=',$type);
+                   
+            } 
+            if($type!== null)
+            {
+             
+                        $this->db->where('property.community=',$community);
                    
             }
             //Search Ends

@@ -14,6 +14,7 @@ class Propertylist extends CI_Controller
         // Cookie helper
         $this->load->model('propertyList_model');
         $this->load->model('admin/type_model');
+        $this->load->model('admin/type/ae_rel_community_list_model');
         $this->load->helper('cookie');
         $this->load->library("pagination");
 
@@ -44,9 +45,49 @@ class Propertylist extends CI_Controller
     $popular['search'] = $escape_with_hyphen;
     $this->index($popular);
    }
+
+    public function community($slugs='',$type='')
+    {
+
+
+            $where = array();
+            $where['table'] = 'ae_rel_community_list';
+            $where['slug'] = $slugs;
+
+            $community_ids = $this->propertyList_model->findDynamic($where);
+            if(!empty($community_ids))
+            {
+                $community_id = $community_ids[0]->id;
+            }else
+            {
+                $community_id = null;
+            }
+
+            switch ($type) {
+                case 'office':
+                    $popular['type'] = 10;
+                break;
+                case 'apartment':
+                    $popular['type'] = 2;
+                break;
+                case 'villas':
+                    $popular['type'] = 1;
+                break;
+                default:'';
+            }
+
+            $popular['community'] = $community_id;
+            $popular['search'] = '';
+
+
+            $this->index($popular);
+    }
     // Index =============================================================
     public function index($popular='')
     {
+
+        $meta_title      =null;
+        $meta_description=null;
     // Onload Common Page Data ============================= 
         $data = array();
          $form_data  = $this->input->get();
@@ -62,6 +103,7 @@ class Propertylist extends CI_Controller
         $bed=null;
         $bath=null;
         $type=null;
+        $community = null;
 
 
       // Onload Commercial Common Page Data=================================
@@ -261,7 +303,13 @@ class Propertylist extends CI_Controller
 		 if(!empty($popular['type']))
         {
              
-            $type = $popular['type'];
+            $type       = $popular['type'];
+            $community  = $popular['community'];
+
+            $communitydatas = $this->ae_rel_community_list_model->find($popular['community']);
+             
+            $meta_title      =$communitydatas->meta_title;
+            $meta_description=$communitydatas->meta_description;
             
             
         }
@@ -275,6 +323,7 @@ class Propertylist extends CI_Controller
         $propertyListData['bed']=$bed;
         $propertyListData['bath']=$bath;
         $propertyListData['type']=$type;
+        $propertyListData['community']=$community;
 
     // Page Commercial Search==============================
 
@@ -329,6 +378,10 @@ class Propertylist extends CI_Controller
         $data['getResidentialList']  = $this->type_model->getResidentialList();
         $data['getCommercialList']  = $this->type_model->getCommercialList();
         $data['PurposeList']  = $this->type_model->PurposeList();
+
+        $data["meta_title"]      = $meta_title;
+        $data["meta_description"]= $meta_description;
+
         $data["file"]="front/property_list";
         $this->load->view('front/header/template',$data);
 

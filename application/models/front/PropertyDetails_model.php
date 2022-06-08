@@ -356,6 +356,7 @@ class PropertyDetails_model extends Base_model
         }
 
 
+
            public function get_apartment_searches()
         {
              $this->db->select('property.location,property.type,property.status');
@@ -391,7 +392,57 @@ class PropertyDetails_model extends Base_model
         return $result;
 
         }
-		
+
+        public function get_office_community()
+        {
+             $this->db->select('p.type, p.community,c.name as communityname ,c.slug as communityslug ');
+                $this->db->from($this->table." as p")
+                ->join('ae_rel_community_list as c','c.id = p.community','left')//this is the left join in codeigniter
+                ->where('p.type','10')
+                    ->group_by("p.community");
+             
+  
+        $query = $this->db->get();
+
+        $result = $query->result();     
+
+        return $result;
+
+        }  
+
+        public function get_apartment_community()
+        {
+             $this->db->select('p.type, p.community,c.name as communityname ,c.slug as communityslug ');
+                $this->db->from($this->table." as p")
+                ->join('ae_rel_community_list as c','c.id = p.community','left')//this is the left join in codeigniter
+                ->where('p.type','2')
+                    ->group_by("p.community");
+             
+  
+        $query = $this->db->get();
+
+        $result = $query->result();     
+
+        return $result;
+
+        }
+		public function get_villa_community()
+        {
+             $this->db->select('p.type, p.community,c.name as communityname ,c.slug as communityslug ');
+                $this->db->from($this->table." as p")
+                ->join('ae_rel_community_list as c','c.id = p.community','left')//this is the left join in codeigniter
+                ->where('p.type','1')
+                    ->group_by("p.community");
+             
+  
+        $query = $this->db->get();
+
+        $result = $query->result();     
+
+        return $result;
+
+        }
+        
 		
 
 

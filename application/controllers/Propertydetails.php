@@ -523,7 +523,8 @@ public function insert_contactus()
        /* $data["get_latest_property"] = $this->propertyDetails_model->get_latest_property();*/
 
         
-        $data["title"]="Al-Eizba";
+        $data["meta_title"]      = $data["property"]->meta_title;
+        $data["meta_description"]= $data["property"]->meta_description;
         /*$data["file"]="front/property_details";*/
         $data["file"]="front/property_detail";
         $this->load->view('front/header/template', $data);

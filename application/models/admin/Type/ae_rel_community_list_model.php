@@ -6,18 +6,18 @@
 
 
 
-class ae_rel_community_list_model extends Base_model
+class Ae_rel_community_list_model extends Base_model
 {
 
     public $table = "ae_rel_community_list";
 
     //set column field database for datatable orderable
-    var $column_order = array(null, 'state_id', 'name', 'code','zip', 'slug', 'status'); 
+    var $column_order = array(null,  'name', 'slug','meta_title', 'meta_description', 'status'); 
 
     //set column field database for datatable searchable 
-    var $column_search = array('name','code', 'zip'); 
+    var $column_search = array( 'name', 'slug','meta_title', 'meta_description', 'status'); 
 
-    var $order = array('id' => 'asc'); // default order
+    var $order = array('id' => 'DESC'); // default order
 
 
 

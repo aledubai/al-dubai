@@ -23,7 +23,7 @@ class Index extends CI_Controller
         // Cookie helper
         $this->load->helper('cookie');
         $this->load->model('front/propertyDetails_model'); 
-        
+
      }
 
 
@@ -46,6 +46,11 @@ class Index extends CI_Controller
           $data["get_office_searches"] = $this->propertyDetails_model->get_office_searches();
           $data["get_apartment_searches"] = $this->propertyDetails_model->get_apartment_searches();
           $data["get_villa_searches"] = $this->propertyDetails_model->get_villa_searches();
+          $data["get_office_community"] = $this->propertyDetails_model->get_office_community();
+          $data["get_apartment_community"] = $this->propertyDetails_model->get_apartment_community();
+          $data["get_villa_community"] = $this->propertyDetails_model->get_villa_community();
+
+          /*print_r($data["get_office_community"]);*/
   
        $data["title"]="Ale-izba";
        $data["file"]="front/homenew";
@@ -118,83 +123,7 @@ class Index extends CI_Controller
         $data["file"]="front/error_404";
        $this->load->view('front/header/template',$data);
     }
-	
-    public function slug_community()
-    {
-      $this->propertyDetails_model->get_office_searches();
-
-       
-      $where['status']    = '1';
-      $community_lists = $this->ae_rel_community_list_model->findDynamic($where);
-      if(!empty($community_lists))
-      {
-         
-        foreach ($community_lists as $community_list ) 
-        {
-
-
-          $my_str = ltrim($community_list->name);
-          $my_str = strtolower($my_str);
-          $my_str  = str_replace("(","",$my_str);
-          $my_str  = str_replace(")","",$my_str);
-          $escape_with_hyphen  = str_replace(" ","-",$my_str);
-          
-          $escape_with_hyphen  = strtolower($escape_with_hyphen);
-          $where = array();
-          $where['slug']    = $escape_with_hyphen;
-          $where['id !=']    = $community_list->id;
-          $community_lists_exist = $this->ae_rel_community_list_model->findDynamic($where);
-          if(!empty($community_lists_exist))
-          {
-            $escape_with_hyphen = $escape_with_hyphen."-".(count($community_lists_exist)+1);
-          }
-           $insertData = array();
-            $insertData['id'] = $community_list->id;
-            $insertData['slug'] = $escape_with_hyphen;
-            $community_lists_exist = $this->ae_rel_community_list_model->save($insertData);
-          echo $community_list->slug."<br>";
-        }  
-        
-      }
-      
-    } public function slug_type()
-    {
- 
-       
-      $where['status']    = '1';
-      $community_lists = $this->ae_rel_propery_type_model->findDynamic($where);
-      if(!empty($community_lists))
-      {
-         
-        foreach ($community_lists as $community_list ) 
-        {
-
-
-          $my_str = ltrim($community_list->name);
-          $my_str = strtolower($my_str);
-          $my_str  = str_replace("(","",$my_str);
-          $my_str  = str_replace(")","",$my_str);
-          $escape_with_hyphen  = str_replace(" ","-",$my_str);
-          
-          $escape_with_hyphen  = strtolower($escape_with_hyphen);
-          $where = array();
-          $where['slug']    = $escape_with_hyphen;
-          $where['id !=']    = $community_list->id;
-          $community_lists_exist = $this->ae_rel_propery_type_model->findDynamic($where);
-          if(!empty($community_lists_exist))
-          {
-            $escape_with_hyphen = $escape_with_hyphen."-".(count($community_lists_exist)+1);
-          }
-           $insertData = array();
-            $insertData['id'] = $community_list->id;
-            $insertData['slug'] = $escape_with_hyphen;
-            $community_lists_exist = $this->ae_rel_propery_type_model->save($insertData);
-          echo $community_list->slug."<br>";
-        }  
-        
-      }
-      
-    }
+	 
     
 
 }

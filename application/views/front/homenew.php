@@ -340,7 +340,8 @@ function clicked()
       </div>
    </div>
 </section>
-<section class="my-bg">
+<?php
+    /*<section class="my-bg">
    <div class="container-fluid wrap-container">
       <div class="row">
          <div class="col-md-12 text-center my_quel">
@@ -403,13 +404,10 @@ function clicked()
                           <div class="list-heading"><h3 class=""><i class="fa fa-building-o" aria-hidden="true"></i> APARTMENT</h3></div>
                          <ul class="under-list">
 
-                        <!-- <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s">APARTMENT</li> --> 
-
+ 
                         
                        <?php
-                         /* echo "<pre>";
-                              print_r($get_apartment_searches);
-                              echo "</pre>";*/
+                         
                               if(!empty($get_apartment_searches))
                               {
                                 $inccc = .20;
@@ -444,19 +442,11 @@ function clicked()
                       </ul>
 
                       </div>
-
-
                       <div class="col-sm-4">
                             <div class="list-heading"><h3 class=""><i class="fa fa-building-o" aria-hidden="true"></i> VILLAS</h3></div>
                            <ul  class="under-list" >
-
-                        <!-- <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s">VILLAS</li> --> 
-
+                            <?php
                         
-                       <?php
-                        /*  echo "<pre>";
-                              print_r($get_villa_searches);
-                              echo "</pre>";*/
                               if(!empty($get_villa_searches))
                               {
                                 $inccc = .20;
@@ -491,6 +481,156 @@ function clicked()
                       </div>
 
                      </div>
+                   </div> 
+               </div>
+            </div>
+         </div>
+          
+      </div>
+   </div>
+</section>*/
+?>
+<section class="my-bg">
+   <div class="container-fluid wrap-container">
+      <div class="row">
+         <div class="col-md-12 text-center my_quel">
+            <div class="section-title text-center">
+               <h3 class="dark-heading"><strong>Community Searches</strong></h3>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-12">
+            <div class="outer_home">
+               <div class="row">
+                  <div class="col-md-12 col-xs-12">
+                    <div class="row">
+
+                      <div class="col-sm-4">
+                        <div class="list-heading"><h3 class=""><i class="fa fa-building-o" aria-hidden="true"></i> OFFICE</h3></div>
+                        <ul class="under-list">
+
+ 
+
+                       <?php
+                         
+                              if(!empty($get_office_community))
+                              {
+                                $inccc = .20;
+                                foreach($get_office_community as $key => $value)
+                                {
+                                   
+                                     
+                                  ?>
+
+
+                                   
+                                    
+                                    <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s"><a href="<?php echo base_url();?>propertylist/community/<?php echo $value->communityslug?>/office"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <?php echo strtoupper($value->communityname)?></a></li> 
+
+                                  
+
+                                   <?php
+                                  
+
+                                  $inccc = $inccc +.05;
+                                }
+                              }
+                            ?>
+
+
+
+                      </ul>
+
+                      </div>
+
+
+                      <div class="col-sm-4">
+                          <div class="list-heading"><h3 class=""><i class="fa fa-building-o" aria-hidden="true"></i> APARTMENT</h3></div>
+                         <ul class="under-list">
+
+                        <!-- <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s">APARTMENT</li> --> 
+
+                        
+                       <?php
+                         /* echo "<pre>";
+                              print_r($get_apartment_searches);
+                              echo "</pre>";*/
+                              if(!empty($get_apartment_community))
+                              {
+                                $inccc = .20;
+                                foreach($get_apartment_community as $key => $value)
+                                {
+
+                                   
+                                      
+                                  ?>
+
+
+                                   
+                                    
+                                    <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s"><a href="<?php echo base_url();?>propertylist/community/<?php echo $value->communityslug?>/apartment"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <?php echo strtoupper($value->communityname)?></a></li> 
+
+                                  
+
+                                   <?php
+                                   
+                                   
+                                   
+                                  $inccc = $inccc +.05;
+                                }
+                              }
+                            ?>
+
+
+
+                      </ul>
+
+                      </div>
+
+
+                      <div class="col-sm-4">
+                            <div class="list-heading"><h3 class=""><i class="fa fa-building-o" aria-hidden="true"></i> VILLAS</h3></div>
+                           <ul  class="under-list" >
+
+                        <!-- <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s">VILLAS</li> --> 
+
+                        
+                       <?php
+                        /*  echo "<pre>";
+                              print_r($get_villa_searches);
+                              echo "</pre>";*/
+                              if(!empty($get_villa_community))
+                              {
+                                $inccc = .20;
+                                foreach($get_villa_community as $key => $value)
+                                {
+                                   
+                                   
+                                      
+                                  ?>
+
+
+                                   
+                                    
+                                    <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s"><a href="<?php echo base_url();?>propertylist/community/<?php echo $value->communityslug?>/villas"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <?php echo strtoupper($value->communityname)?></a></li> 
+
+                                  
+
+                                   <?php
+                                   
+                                  $inccc = $inccc +.05;
+                                }
+                              }
+                            ?>
+
+
+
+                      </ul>
+
+                      </div>
+
+                     </div>
 
 
 
@@ -513,7 +653,6 @@ function clicked()
       </div>
    </div>
 </section>
-
 <section class="most-popular">
    <div class="container-fluid wrap-container">
       <!-- <div class="row">
