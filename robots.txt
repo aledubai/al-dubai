@@ -1,0 +1,5 @@
+User-agent: *allow: /
+
+Disallow: /propertydetails/get_details/NQ==/Jumeirah-Bay-X1-Jumeirah-Lake-Towers-JLT-Dubai
+Disallow: /propertydetails/get_details/NA==/Apartments-for-sale-in-Botanica-Tower
+Disallow: /propertydetails/get_details/NTQ=/Portofino-Townhouses-and-Villas-at-Damac-Lagoons
