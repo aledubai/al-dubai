@@ -14,7 +14,6 @@ class Propertylist extends CI_Controller
         // Cookie helper
         $this->load->model('propertyList_model');
         $this->load->model('admin/type_model');
-        $this->load->model('admin/type/ae_rel_community_list_model');
         $this->load->helper('cookie');
         $this->load->library("pagination");
 
@@ -306,8 +305,15 @@ class Propertylist extends CI_Controller
             $type       = $popular['type'];
             $community  = $popular['community'];
 
-            $communitydatas = $this->ae_rel_community_list_model->find($popular['community']);
-             
+
+            $where = array();
+            $where['table'] = 'ae_rel_community_list';
+            $where['id'] = $popular['community'];
+
+            $community_ids = $this->propertyList_model->findDynamic($where);
+            $communitydatas = $community_ids[0];
+
+ 
             $meta_title      =$communitydatas->meta_title;
             $meta_description=$communitydatas->meta_description;
             
