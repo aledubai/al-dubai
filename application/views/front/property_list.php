@@ -883,9 +883,9 @@ height: 69rem !important;
                   </select>
                </span>
             </div>
-            <div class="col-md-4 text-center  ">
+            <div class="col-md-6 text-center  ">
                <div class="section-title text-center mb-0">
-                  <h3>Al-eizba Real Estate Listings</h3>
+                  <h3><?php echo (isset($typename) && $typename !=='')?(@$typename.' in '.@$communityname):'Al-eizba Real Estate Listings';?></h3>
                </div>
             </div>
             <div hidden="" class="col-md-4 ">

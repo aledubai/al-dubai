@@ -67,7 +67,9 @@
                                     <!--Country Code-->                             
                                     <div class="form-group">
                                         <label for="slug">Slug</label>
-                                        <input type="text" id="slug" name ="slug" class="form-control" required="required" placeholder="Enter slug" value="" >
+                                        <span id="msg_slug"></span>
+                                        <input type="text" id="slug" name ="slug" class="form-control" required="required" placeholder="Enter slug" readonly >
+                                         <span class="text-danger" onclick="change_slug_btn()">Change</span>
                                     </div> 
                                     
                                      <!--Phone Code-->                             
@@ -101,7 +103,7 @@
                         </div><!-- /.box-body -->
     
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Submit" />
+                            <input type="submit" class="btn btn-primary" value="Submit" id="submit" />
                             <input type="reset" class="btn btn-default" value="Reset" />
                         </div>
                     </form>
@@ -113,3 +115,82 @@
     
 </div>
 
+<script>
+
+
+    function change_slug_btn()
+    {
+        var isreadoly  =$("#slug").is('[readonly]') ;
+        if(isreadoly)
+        {
+                $("#slug").removeAttr('readonly');
+        }else
+        {
+            $("#slug").attr("readonly","readonly");
+        }
+         
+        
+    }
+    function convertToSlug(Text)
+    {
+    return Text
+       .toLowerCase()
+       .replace(/ /g,'-')
+       .replace(/[^\w-]+/g,'')
+       ;
+    }
+
+      $(document).on('input', '#name', function() {
+           var name = $("#name").val();
+           var slug_url = convertToSlug(name);
+           $("#slug").val(slug_url);
+           check_slug();
+              
+       
+       });
+
+        $(document).on('input', '#slug', function() {
+           var name = $("#slug").val();
+           var slug_url = convertToSlug(name);
+           $("#slug").val(slug_url);
+           check_slug();
+              
+       
+       });
+    function check_slug()
+    {
+    $("#msg_slug").html('Please Wait..'); 
+       var slug_url = $("#slug").val();
+       var id = $("#id").val();
+
+        $.ajax(
+             {
+               type:"POST",
+               url:"<?php echo base_url()?>vendor/community/check_slug",
+               data:'slug_url='+slug_url+"&id="+id,
+               success:function(returnVal)
+               {
+                
+                 $("#msg_slug").html(''); 
+                 if(returnVal == 'not_login')
+                 {
+                   window.location.href = "<?php echo base_url()?>login";
+                 }
+                 else if(returnVal == 'slug_exist')
+                 {
+                    $("#submit").attr('disabled','disabled');
+                     $("#msg_slug").html('Already Exist');
+                   $("#msg_slug").css('color','red'); 
+                 }else if(returnVal == 'slug_available')
+                 {
+                   
+                   $("#msg_slug").html('Available');
+                   $("#msg_slug").css('color','green');
+
+                    $("#submit").removeAttr('disabled');
+                 }
+                 
+               }
+             });
+    }
+</script>

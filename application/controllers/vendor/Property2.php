@@ -571,6 +571,7 @@ $checkbox = '<input class="form-check-input" type="checkbox" value="" id="flexCh
             $row[] = $checkbox;
             $row[] = $no;
             $row[] = $currentObj->external_reference;
+            $row[] = $currentObj->EnTitle;
             $row[] = (isset($PurposeList[$currentObj->purpose]))? $PurposeList[$currentObj->purpose]:"";
             $row[] = (isset($TypeList[$currentObj->type]))? $TypeList[$currentObj->type]:"";
             $row[] = $currentObj->beds;

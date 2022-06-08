@@ -9,7 +9,7 @@ class Community extends BaseController
     public function __construct()
     {
         parent::__construct();
-       $this->load->model('admin/type/ae_rel_community_list_model');
+       $this->load->model('admin/ae_rel_community_list_model');
     }
 
     
@@ -248,6 +248,40 @@ class Community extends BaseController
           }  
         
     }
+
+    public function check_slug()
+    { 
+        $this->isVendorLoggedIn();
+         $form_data  = $this->input->post();
+
+         if(isset($form_data['slug_url']))
+         {
+                $where = array();
+                $where['status'] = '1';
+                $slug_url = strtolower($form_data['slug_url']);;
+                $where['field'] = 'id';
+                $and_condition ='';
+                if(isset($form_data['id']) && $form_data['id'] !=='')
+                {
+                    $and_condition = " AND id !='".$form_data['id']."'";
+                }else
+                {
+                    $and_condition = " ";
+                }
+                $wheres  = "  status = '1' AND  slug= '$slug_url' $and_condition";
+            $result = $this->ae_rel_community_list_model->sqls_query($wheres);
+            if(count($result) > 0)
+            {
+                echo 'slug_exist';
+            }else
+            {
+                 echo 'slug_available';
+            }
+         }
+
+
+    }
+
 
     
     

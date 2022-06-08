@@ -87,6 +87,8 @@ class Propertylist extends CI_Controller
 
         $meta_title      =null;
         $meta_description=null;
+        $communityname  = null;
+        $typename       = null;
     // Onload Common Page Data ============================= 
         $data = array();
          $form_data  = $this->input->get();
@@ -309,10 +311,17 @@ class Propertylist extends CI_Controller
             $where = array();
             $where['table'] = 'ae_rel_community_list';
             $where['id'] = $popular['community'];
-
             $community_ids = $this->propertyList_model->findDynamic($where);
             $communitydatas = $community_ids[0];
 
+            $where = array();
+            $where['table'] = 'ae_rel_propery_type';
+            $where['id'] = $popular['type'];
+            $type_ids = $this->propertyList_model->findDynamic($where);
+            $typedatas = $type_ids[0];
+
+            $communityname  = $communitydatas->name;
+            $typename       = $typedatas->name;
  
             $meta_title      =$communitydatas->meta_title;
             $meta_description=$communitydatas->meta_description;
@@ -384,6 +393,9 @@ class Propertylist extends CI_Controller
         $data['getResidentialList']  = $this->type_model->getResidentialList();
         $data['getCommercialList']  = $this->type_model->getCommercialList();
         $data['PurposeList']  = $this->type_model->PurposeList();
+
+        $data["communityname"]      = $communityname;
+        $data["typename"]           = $typename;
 
         $data["meta_title"]      = $meta_title;
         $data["meta_description"]= $meta_description;

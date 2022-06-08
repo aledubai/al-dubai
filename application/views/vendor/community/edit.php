@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       <a href="<?php echo base_url();?>vendor/community"> <i class="fa fa-globe" aria-hidden="true"></i>Community</a>
+       <a href="<?php echo base_url();?>vendor/community"> <i class="fa fa-globe" aria-hidden="true"></i> Community</a>
         <small>Edit</small>
       </h1>
     </section>
@@ -65,7 +65,9 @@
                                     <!--Country Code-->                             
                                     <div class="form-group">
                                         <label for="code">Slug</label>
-                                        <input type="text" id="slug" name ="slug" class="form-control" required="required" placeholder="Enter slug" value="<?php echo $edit_data->slug;?>" >
+                                        <span id="msg_slug"></span>
+                                        <input type="text" id="slug" name ="slug" class="form-control" required="required" placeholder="Enter slug" readonly value="<?php echo $edit_data->slug;?>" >
+                                        <span class="text-danger" onclick="change_slug_btn()">Change</span>
                                     </div> 
                                     
                                      <!--Phone Code-->                             
@@ -99,7 +101,7 @@
     
                         <div class="box-footer">
                             <input type="hidden" name="id" value="<?php echo $edit_data->id; ?>"/>
-                            <input type="submit" class="btn btn-primary" value="Submit" />
+                            <input type="submit" class="btn btn-primary" value="Submit" id="submit" />
                             <input type="reset" class="btn btn-default" value="Reset" />
                         </div>
                     </form>
@@ -109,12 +111,83 @@
         </div>    
     </section>
 </div>
- 
-<script src="<?php echo base_url() ?>assets/js/jquery-ui.js"></script>  
-
+  
 <script>
-	$(".delete_old_img").click(function(){
-		$("#old_img_con").addClass('hidden');
-		$("#old_img").val('');
-	});
+
+
+    function change_slug_btn()
+    {
+        var isreadoly  =$("#slug").is('[readonly]') ;
+        if(isreadoly)
+        {
+                $("#slug").removeAttr('readonly');
+        }else
+        {
+            $("#slug").attr("readonly","readonly");
+        }
+         
+        
+    }
+    function convertToSlug(Text)
+    {
+    return Text
+       .toLowerCase()
+       .replace(/ /g,'-')
+       .replace(/[^\w-]+/g,'')
+       ;
+    }
+
+      $(document).on('input', '#name', function() {
+           var name = $("#name").val();
+           var slug_url = convertToSlug(name);
+           $("#slug").val(slug_url);
+           check_slug();
+              
+       
+       });
+
+        $(document).on('input', '#slug', function() {
+           var name = $("#slug").val();
+           var slug_url = convertToSlug(name);
+           $("#slug").val(slug_url);
+           check_slug();
+              
+       
+       });
+    function check_slug()
+    {
+    $("#msg_slug").html('Please Wait..'); 
+       var slug_url = $("#slug").val();
+       var id = $("#id").val();
+
+        $.ajax(
+             {
+               type:"POST",
+               url:"<?php echo base_url()?>vendor/community/check_slug",
+               data:'slug_url='+slug_url+"&id="+id,
+               success:function(returnVal)
+               {
+                
+                 $("#msg_slug").html(''); 
+                 if(returnVal == 'not_login')
+                 {
+                   window.location.href = "<?php echo base_url()?>login";
+                 }
+                 else if(returnVal == 'slug_exist')
+                 {
+                    $("#submit").attr('disabled','disabled');
+                     $("#msg_slug").html('Already Exist');
+                   $("#msg_slug").css('color','red'); 
+                 }else if(returnVal == 'slug_available')
+                 {
+                   
+                   $("#msg_slug").html('Available');
+                   $("#msg_slug").css('color','green');
+
+                    $("#submit").removeAttr('disabled');
+                 }
+                 
+               }
+             });
+    }
 </script>

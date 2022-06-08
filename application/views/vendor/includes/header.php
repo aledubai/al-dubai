@@ -162,14 +162,14 @@
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa fa-retweet"></i> <span>Community</span>
+                <i class="fa fa fa-retweet"></i> <span>Type</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu" style="display: none;">
-                <li><a href="<?php echo base_url() ?>vendor/community"><i class="fa fa-circle-o"></i> Manage Community</a></li>
-                <li><a href="<?php echo base_url() ?>vendor/community/addnew"><i class="fa fa-circle-o"></i>Add Community</a></li>
+                <li><a href="<?php echo base_url() ?>vendor/community"><i class="fa fa-circle-o"></i>Community</a></li>
+                <li><a href="<?php echo base_url() ?>vendor/property_type"><i class="fa fa-circle-o"></i>Propert Type</a></li>
                  
               </ul>
             </li>

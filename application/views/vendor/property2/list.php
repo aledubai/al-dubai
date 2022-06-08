@@ -53,6 +53,7 @@ table.dataTable tbody td i{font-size: 14px;}
 										 <th><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked></th>
 										 <th>ID</th>
 										 <th>EXTERNAL REFERNCE</th>
+                     <th>TITLE</th>
 										  <th>PURPOSE</th>
 										 <th>TYPE</th>
 										 <th>BEDS</th>

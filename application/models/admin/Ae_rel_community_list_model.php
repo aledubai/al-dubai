@@ -1,17 +1,21 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Property2_model extends Base_model
+
+
+
+
+
+
+class Ae_rel_community_list_model extends Base_model
 {
 
-    public $table = "property";
+    public $table = "ae_rel_community_list";
 
     //set column field database for datatable orderable
-    //var $column_order = array(null, 'img', 'name', 'price','area_size','rooms','address', 'date_at', 'status'); 
-
-        var $column_order = array(null, null, 'external_reference', 'EnTitle','purpose', 'type', 'beds','location', 'area', 'rent', 'assign_to', null, 'date_at', 'status', null,null,null,null); 
+    var $column_order = array(null,  'name', 'slug','meta_title', 'meta_description', 'status'); 
 
     //set column field database for datatable searchable 
-        var $column_search = array('external_reference' , 'EnTitle',  'purpose', 'type', 'beds','location', 'area', 'rent', 'assign_to','date_at', 'status');  
+    var $column_search = array( 'name', 'slug','meta_title', 'meta_description', 'status'); 
 
     var $order = array('id' => 'DESC'); // default order
 
@@ -77,10 +81,10 @@ class Property2_model extends Base_model
 
        // Get  List
 
-        function get_datatables($user_id)
+        function get_datatables()
         {
 
-            $this->_get_datatables_query($user_id);
+            $this->_get_datatables_query();
 
             if(isset($_POST['length']) && $_POST['length'] != -1)
 
@@ -94,17 +98,11 @@ class Property2_model extends Base_model
 
         // Get Database 
 
-         public function _get_datatables_query($user_id)
+         public function _get_datatables_query()
         {     
 
             $this->db->from($this->table);
-             if($this->session->userdata('user_role') =="Admin")
-            {
 
-            }else
-            {
-                $this->db->where($this->table.'.user_id',$user_id);  
-            }
             $i = 0;     
 
             foreach ($this->column_search as $item) // loop column 
@@ -162,10 +160,10 @@ class Property2_model extends Base_model
 
         // Count  Filtered
 
-        function count_filtered($user_id)
+        function count_filtered()
         {
 
-            $this->_get_datatables_query($user_id);
+            $this->_get_datatables_query();
 
             $query = $this->db->get();
 
@@ -175,41 +173,17 @@ class Property2_model extends Base_model
 
         // Count all
 
-        public function count_all($user_id)
+        public function count_all()
         {
 
             $this->db->from($this->table);
-            if($this->session->userdata('user_role') =="Admin")
-            {
 
-            }else
-            {
-                $this->db->where($this->table.'.user_id',$user_id);  
-            }
-              
-             
-             
             return $this->db->count_all_results();
 
         }
-        // Get Property List Only all
-         
-        public function get_property_list()
-        {
-           $query = $this->db->select('*')
-                    ->from($this->table)
-                    ->get();
 
-            if ($query->num_rows() > 0) {
-                $result = $query->result();
-                return $result;
-            } else {
-                return array();
-            }
 
-        }
-
-         public function  sqls_query($where='')
+        public function  sqls_query($where='')
         {
             $this->db->select('id');
 
@@ -225,16 +199,8 @@ class Property2_model extends Base_model
 
                  
         }
+
+
+
 }
 
-
-
-
-
-
-
-
-
-
-
-  
