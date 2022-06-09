@@ -398,7 +398,7 @@ class PropertyDetails_model extends Base_model
              $this->db->select('p.type, p.community,c.name as communityname ,c.slug as communityslug ');
                 $this->db->from($this->table." as p")
                 ->join('ae_rel_community_list as c','c.id = p.community','left')//this is the left join in codeigniter
-                ->where('p.type','10')
+                ->where('p.type','10')->where('p.status','1')
                     ->group_by("p.community");
              
   
@@ -415,7 +415,7 @@ class PropertyDetails_model extends Base_model
              $this->db->select('p.type, p.community,c.name as communityname ,c.slug as communityslug ');
                 $this->db->from($this->table." as p")
                 ->join('ae_rel_community_list as c','c.id = p.community','left')//this is the left join in codeigniter
-                ->where('p.type','2')
+                ->where('p.type','2')->where('p.status','1')
                     ->group_by("p.community");
              
   
@@ -431,7 +431,7 @@ class PropertyDetails_model extends Base_model
              $this->db->select('p.type, p.community,c.name as communityname ,c.slug as communityslug ');
                 $this->db->from($this->table." as p")
                 ->join('ae_rel_community_list as c','c.id = p.community','left')//this is the left join in codeigniter
-                ->where('p.type','1')
+                ->where('p.type','1')->where('p.status','1')
                     ->group_by("p.community");
              
   

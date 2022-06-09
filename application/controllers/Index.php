@@ -49,8 +49,7 @@ class Index extends CI_Controller
           $data["get_office_community"] = $this->propertyDetails_model->get_office_community();
           $data["get_apartment_community"] = $this->propertyDetails_model->get_apartment_community();
           $data["get_villa_community"] = $this->propertyDetails_model->get_villa_community();
-
-          /*print_r($data["get_office_community"]);*/
+           
   
        $data["title"]="Ale-izba";
        $data["file"]="front/homenew";
