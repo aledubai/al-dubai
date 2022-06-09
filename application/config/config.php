@@ -371,31 +371,21 @@ $config['waterMarkText']  = 'Preview';
 
 
 // SMTP
-$config['SMTP_ACTIVE'] = 'YES'; // YES or NO (YES : send mail , NO : to stop mail service)
-$config['SMTP_MODE'] = 'LIVE'; // LIVE or TEST (when live then actual mail send else send a mail to TEST_MAIL)
-$config['SMTP_HOST'] = 'smtp.sendgrid.net';
-$config['SMTP_PORT'] = '587';
-$config['SMTP_USER_NAME'] = 'ourfund';
-$config['SMTP_PASSWORD'] = 'admin2017';
-$config['TEST_MAIL'] = 'mishragkmishra@gmail.com';
+$config['SMTP_ACTIVE'] = 'YES';
+$config['SMTP_MODE'] = 'LIVE';
+$config['SMTP_HOST'] = 'aleizba.com';
+$config['SMTP_PORT'] = '465';
+$config['SMTP_USER_NAME'] = 'smtp@aleizba.com';
+$config['SMTP_PASSWORD'] = 'Ranzz!@#$%54321';
+$config['TEST_MAIL'] = '';
 
-$config['support_no'] = '+1-844-889-2537';
-$config['admin_email_id'] = 'makkarnitin78@gmail.com';
+$config['support_no'] = '+97-154-587-1570';
+$config['admin_email_id'] = 'anilkumarm309@gmail.com';
 
 //$config['admin_email_id'] = 'bkvishwakarma113311@gmail.com';
 
 /* Test Stripe Config*/
-$config['secret_key'] = 'sk_test_51HEQGCFzpPfVgDLq7Qdck8xKoWvZghc48x1xVzwhcJHMZoh1MVSPvs4g1FVIQLFDd14b1h3lOA1QsU3LvAkatNxo001TCvbBtR';
-$config['publishable_key'] = 'pk_test_51HEQGCFzpPfVgDLqAUOelZfJiGz8DIqTIISrxGYRIbTxjxCMvlJA8aFBxxtOSEnBM9fjS5JMseMYcaB5jbj0YccY00RmVx8Zbu';
-$config['plan_key'] = 'price_1HHSsWFzpPfVgDLqCYdPCOFB';
-
-/* BK Test Stripe Config*/
-// $config['secret_key'] = 'sk_test_Zu8s6e7KihZ1VXgpjeXPrKr500QHBRbmi0';
-// $config['publishable_key'] = 'pk_test_wt7SJS68Urdy3w5GGkf04jXf00qHHDoAi2';
-// $config['plan_key'] = 'plan_Hqoi8f7kIFvK83';
-
-/* Live Stripe Config*/
-// $config['secret_key'] = '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';
-// $config['publishable_key'] = 'pk_live_51HEQGCFzpPfVgDLq3IJbfUUBZml1WAIYonvVFH7xZO3RJU3PyaEnJMNoZZwxG2M0I9q25BVujZyqD12e5VAxvXQZ00qw9RNP9d';
-// $config['plan_key'] = 'price_1HGnbjFzpPfVgDLqc4wlpYZO';
-
+$config['secret_key'] = '';
+$config['publishable_key'] = '';
+$config['plan_key'] = '';
+ 
