@@ -449,7 +449,7 @@ print_r($this->db->last_query());
                     ->get();
             $result = $query->result(); 
             foreach ($result as $v) {
-                      $community[$v->id] = $v->name;
+                      $community[$v->id] = $v->name."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(".$v->slug." )";
                    } 
             return $community;
         }
