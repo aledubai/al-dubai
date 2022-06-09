@@ -446,6 +446,7 @@ print_r($this->db->last_query());
              $query = $this->db->select('*')
                     ->from('ae_rel_community_list')
                     ->where('status', '1')
+                    ->order_by("name", "asc")
                     ->get();
             $result = $query->result(); 
             foreach ($result as $v) {
