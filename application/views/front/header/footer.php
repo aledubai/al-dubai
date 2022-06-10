@@ -83,6 +83,18 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="<?php echo base_url();?>assets/js/root-menu.js" type="text/javascript" ></script>
 <!-- end -->
+<script>
 
+function myGreeting() {
+  var htmlllss = $("#goog-gt-tt .top").html('<h5 class="title gray">Original text</h5>');
+   
+    
+}
+ $(document).ready(function(){
+       setTimeout(myGreeting, 1000);
+
+    
+  }); 
+</script>
 </body>
 </html>

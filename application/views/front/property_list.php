@@ -885,7 +885,7 @@ height: 69rem !important;
             </div>
             <div class="col-md-6 text-center  ">
                <div class="section-title text-center mb-0">
-                  <h3><?php echo (isset($typename) && $typename !=='')?(@$typename.' in '.@$communityname):'Al-eizba Real Estate Listings';?></h3>
+                  <h1><?php echo (isset($typename) && $typename !=='')?(@$typename.' in '.@$communityname):'Al-eizba Real Estate Listings';?></h1>
                </div>
             </div>
             <div hidden="" class="col-md-4 ">
