@@ -50,9 +50,11 @@ class Index extends CI_Controller
           $data["get_apartment_community"] = $this->propertyDetails_model->get_apartment_community();
           $data["get_villa_community"] = $this->propertyDetails_model->get_villa_community();
            
-  
-       $data["title"]="Ale-izba";
-       $data["file"]="front/homenew";
+         
+          $data["meta_title"]="Buy Property in Dubai, Buy Flat in Dubai, Buy Home in Dubai | Aleizba";
+          $data["meta_description"]="Buy property in Dubai, largest inventory of residential properties and commercial real estate in Dubai. Start your property search today on Aleizba.com";
+          $data["meta_keyword"]="buy property in dubai, buy office in dubai, buy flat in dubai, properties in dubai, villas for sale in dubai, real estate in dubai, buy home in dubai, villas for sale in dubai south";
+          $data["file"]="front/homenew";
        $this->load->view('front/header/template',$data);
     }  
 

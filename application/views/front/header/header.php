@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="keywords" content="<?php echo (isset($meta_description))?strtolower($meta_description):'search real estate properties in uae at aleizba.com, the best property site in dubai. buy, sell, rent residential and commercial properties'; ?>" />
+<meta name="keywords" content="<?php echo (isset($meta_keyword))?strtolower($meta_keyword):'search real estate properties in uae at aleizba.com, the best property site in dubai. buy, sell, rent residential and commercial properties'; ?>" />
 <meta name="description" content="<?php echo (isset($meta_description))?$meta_description:'Search Real Estate Properties in UAE at Aleizba.com, the best property site in Dubai. Buy, Sell, Rent residential and commercial properties'; ?>" />
 <meta property="og:title" content="<?php echo (isset($meta_title))?$meta_title:'Properties in Dubai, Buy Home in Dubai, Buy Office in Dubai, Aleizba.com'; ?>">
 <meta property="og:description" content="<?php echo (isset($meta_description))?$meta_description:'Search Real Estate Properties in UAE at Aleizba.com, the best property site in Dubai. Buy, Sell, Rent residential and commercial properties'; ?>">

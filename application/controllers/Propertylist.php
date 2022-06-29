@@ -87,6 +87,7 @@ class Propertylist extends CI_Controller
 
         $meta_title      =null;
         $meta_description=null;
+        $meta_keyword=null;
         $communityname  = null;
         $typename       = null;
     // Onload Common Page Data ============================= 
@@ -320,11 +321,12 @@ class Propertylist extends CI_Controller
             $type_ids = $this->propertyList_model->findDynamic($where);
             $typedatas = $type_ids[0];
 
-            $communityname  = $communitydatas->name;
-            $typename       = $typedatas->name;
+            $communityname      = $communitydatas->name;
+            $typename           = $typedatas->name;
  
-            $meta_title      =$communitydatas->meta_title;
-            $meta_description=$communitydatas->meta_description;
+            $meta_title         =$communitydatas->meta_title;
+            $meta_description   = $communitydatas->meta_description;
+            $meta_keyword       = $communitydatas->meta_description;
             
             
         }
@@ -399,6 +401,7 @@ class Propertylist extends CI_Controller
 
         $data["meta_title"]      = $meta_title;
         $data["meta_description"]= $meta_description;
+        $data["meta_keyword"]= $meta_description;
 
         $data["file"]="front/property_list";
         $this->load->view('front/header/template',$data);
