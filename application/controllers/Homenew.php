@@ -152,9 +152,8 @@ class Homenew extends CI_Controller
     public function payment_calculator(){
 
       $data=array();
-
-      // Define====================================
       $data["title"]="Al-Eizba";
+      $data["meta_title"]='Mortgage affordability calculator dubai | Aleizba';
       $data["file"]="front/payment_calculator";
       $this->load->view('front/header/template', $data);
     }
