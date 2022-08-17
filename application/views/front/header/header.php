@@ -69,7 +69,6 @@
 
   gtag('config', 'UA-237896413-1');
 </script>
-
 <!-- Global site tag (gtag.js) - Google Analytics -->
 </head>
 <body>
