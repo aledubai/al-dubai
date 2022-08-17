@@ -60,6 +60,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Convergence&display=swap" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>assets/images/favicon.png">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-237896413-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-237896413-1');
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
 </head>
 <body>
 
