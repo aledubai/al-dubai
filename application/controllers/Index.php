@@ -100,7 +100,6 @@ class Index extends CI_Controller
       $apidata['url']      =  'http://127.0.0.1/SharedAccess/web44/adminpanel/listdata';
       $apidata['url_from'] =  base_url();
       $apidata['apikey']   =  "097u7hk7KK";
-
       
           $callcurl = callcurl($apidata);
            
@@ -110,10 +109,6 @@ class Index extends CI_Controller
 
           print_r($getresult);
           echo "</pre>";
-         
-           
-      
-      
     }
 	
 	

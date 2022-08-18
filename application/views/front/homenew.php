@@ -152,7 +152,7 @@
                   <!-- end -->
                   <!-- search button  -->
                   <div class="p-2 ml-5">
-                     <button type="submit" class="searchAleForm " id="modalSearch"><b><i class="fa fa-search" aria-hidden="true"></i></b></button>
+                     <button type="submit" class="searchAleForm" id="modalSearch"><b><i class="fa fa-search" aria-hidden="true"></i></b></button>
                      <a hidden href="#" class="searchAleForm "><i class="fa fa-search" aria-hidden="true"></i></a>
                   </div>
                </div>
