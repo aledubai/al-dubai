@@ -114,7 +114,7 @@ public function insert_contactus()
         $this->load->library('email');
 
         //SMTP & mail configuration
-        $config = array(
+        /*$config = array(
         'protocol'  => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
         'smtp_port' => 465,
@@ -131,10 +131,10 @@ public function insert_contactus()
 
         $this->email->to($to_email);
         $this->email->subject('Email For Wnquiry'); 
-        $this->email->message('Hi, $contact_name  WE Will Be Back Soon With Your Regarding Coctact Details . $to_message ');
+        $this->email->message('Hi, $contact_name  WE Will Be Back Soon With Your Regarding Coctact Details . $to_message ');*/
  
         /*if($this->email->send())*/
-        if(@$this->email->send())
+        if(1)
         {
 
 
