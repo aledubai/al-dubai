@@ -182,7 +182,22 @@ class Settingprofile_model extends Base_model
 
         }
 
+         public function  sqls_query($where='')
+        {
+            $this->db->select('id');
 
+            $this->db->from($this->table);
+            if($where !='')
+            {
+            $this->db->where($where);
+
+            }
+            $query = $this->db->get();
+            $result = $query->result();
+            return $result;
+
+                 
+        }
 
 }
 

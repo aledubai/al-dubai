@@ -228,7 +228,7 @@
                                                  
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="Rent"   class="col-sm-3 control-label"></label>
                                         <div class="col-sm-9">
                                             <select class="form-control input-sm" required="" name="saleList" id="saleList">
@@ -239,7 +239,7 @@
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <label for="location" class="col-sm-3 control-label">Location:</label>
                                         <div class="col-sm-9">
@@ -515,7 +515,7 @@
                                     <div class="form-group">
                                         <div class="col-sm-offset-3 col-sm-9">
                                             <div class="checkbox">
-                                                <button type="button" class="btn btn-default btn-sm btn-xs btn-default-rc btnAddFeature"><strong>+</strong> Featurs (0)</button>
+                                                <button type="button" class="btn btn-default btn-sm btn-xs btn-default-rc btnAddFeature"><strong>+</strong> Features (0)</button>
                                                 <button type="button" class="btn btn-default btn-sm btn-xs btn-default-rc btnExtraInfo"><strong>+</strong> Extra Info</button>
 
                                                 <div class="btn-group pull-right">

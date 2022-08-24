@@ -169,7 +169,7 @@
   
 </style>
  
-   <div class="container-fluid">
+   <div class="mycontainer">
       <div class="row justify-content-between p-2" style="background-color: #044f53">
 		<div class="col-6">
 		   <a href="#" id="language" class="hormenu_a">

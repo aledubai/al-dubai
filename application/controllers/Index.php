@@ -56,7 +56,9 @@ class Index extends CI_Controller
           $data["meta_keyword"]="buy property in dubai, buy office in dubai, buy flat in dubai, properties in dubai, villas for sale in dubai, real estate in dubai, buy home in dubai, villas for sale in dubai south";
           $data["file"]="front/homenew";
        $this->load->view('front/header/template',$data);
+   
     }  
+
 
     public function cookieupdate()
     {

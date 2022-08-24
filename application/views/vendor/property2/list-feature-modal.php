@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-12">
                 <h3 class="text-center" >LISTING FEATURES</h3>
-                <p class="text-center" >Amenities marked with  are synced to Dubizzle</p>
+                <p class="text-center" >Amenities marked with  are synced to Al-Eizba</p>
             </div>
             <!-- col-12-->
             <div class="col-sm-12 mt-4">

@@ -33,7 +33,7 @@
 
 .ale_faci i{
 	font-size: 20px;
-	color: #767676!important;
+	color: #044f54!important;
 }
 
 .ale_pop {
@@ -59,14 +59,11 @@
     background: #ffc107;
 }
 .carousel-control-next {
-    right: 25px !important;
+    right: -40px !important;
     width: 0;
 }
-.carousel-control-next-icon, .carousel-control-prev-icon {
-    padding: 10px;
-}
 .carousel-control-prev {
-    left: 25px;
+    left: -40px;
     width: 0;
 }
 .AleBoxes {

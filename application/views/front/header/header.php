@@ -59,7 +59,37 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Convergence&display=swap" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url();?>assets/images/favicon.png">
-
+<style type="text/css">
+	.modal-backdrop {    z-index: 0;}
+	.modal-header .close {
+    margin: 0rem 0rem 0rem auto;
+}
+.modal-icons img {
+    width: 120px;
+    margin: 0 auto;
+    display: inherit;
+}
+.my-modals p {
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+}
+.modal-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: center;
+    padding: 0rem;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+}
+.modal-content {
+    height: auto;
+}
+</style>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-237896413-1"></script>
 <script>

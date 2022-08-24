@@ -185,11 +185,6 @@ function clicked()
   }
 }
 </script>
-
-
-
-
-
 <section class="ale_tag">
    <div class="container-fluid">
       <div  class="row">
@@ -213,8 +208,10 @@ function clicked()
       </div>
       <div class="row ">
          <!-- START -->
+
          <?php
-          if(isset($get_latest_property) && !empty($get_latest_property))
+
+           if(isset($get_latest_property) && !empty($get_latest_property))
           {
             foreach($get_latest_property as   $value)
             {
@@ -240,8 +237,9 @@ function clicked()
                ?> 
          <div class="col-md-3 col-xs-12 mainDiv mt-4">
             <!-- <a href="<?php echo base_url();?>propertydetails/get_details/<?=base64_encode($value->id)?>/<?=$ttitle?>" class="propertyDetails"> -->
-            <a href="<?php echo base_url();?>propertydetails/<?=($value->slug_url)?>" class="propertyDetails">
                <div class="AleBoxes">
+            <a href="<?php echo base_url();?>propertydetails/<?=($value->slug_url)?>" class="propertyDetails">
+              
                   <?php
                      if(isset($thumb) and  $thumb!=='')
                       {
@@ -262,17 +260,45 @@ function clicked()
                   </h3>
                   <p>&nbsp;<?=substr($value->EnTitle, 0, 40) ?></p>
                   <div class="d-flex mt-3 text-center">
-                     <span class="ale_faci">&nbsp;<?php echo  $value->beds; ?>&nbsp;&nbsp;<i class="fa fa-bed" aria-hidden="true"></i><br>
-                     <span class="ale_pop">Bedrooms</span></span>
-                     <span class="ale_faci">&nbsp;<?php echo $value->baths; ?>&nbsp;&nbsp;<i class="fa fa-bath" aria-hidden="true"></i><br>
-                     <span class="ale_pop">Bathrooms</span></span>
-                     <span class="ale_faci"><i class="fa fa-home" aria-hidden="true"></i><br>
-                     <span class="ale_pop">Condo</span></span>   
+                      <?php if($value->beds)
+                      {
+                        ?>
+                          <span class="ale_faci">&nbsp;<?php echo  $value->beds; ?>&nbsp;&nbsp;<i class="fa fa-bed" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Bedrooms</span>
+                          </span>
+                        <?php
+                      }?>
+                      <?php if($value->baths)
+                      {
+                        ?>
+                        <span class="ale_faci">&nbsp;<?php echo $value->baths; ?>&nbsp;&nbsp;<i class="fa fa-bath" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Bathrooms</span>
+                        </span>
+                        <?php
+                      }?>
+                        
                   </div>
-                  <!-- <p class="mt-3"><?php echo $value->landlord; ?></p> -->
-                  </div>
-               </div>
+                  
+                 
+              </div>
+
+               
             </a>
+
+             <div class="row m-2 mb-3">
+                    <div class="col-sm-8">
+                      <button type="button contact-by-call" data-toggle="modal" data-target="#PhoneModal" data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>" class="btn btn-primary btn-sm home_meet_btn m-0"> <i class="fa fa-phone" aria-hidden="true"></i> Call</button>
+                      <button type="button contact-by-email" data-toggle="modal" data-target="#emailModal"  data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>"  data-landlord_id="<?php echo $value->landlord_id;?>"  data-comp_name="<?php echo $value->comp_name;?>"  data-comp_img="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>" data-comp_url="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>" class="btn btn-secondary btn-sm home_meet_btn m-0"> <i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</button>  
+                     
+                      </div>
+                      <div class="col-sm-4">
+                        <a href="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>">
+                          <img src="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>"  style="width:100%;height:60px;background:unset">
+                        </a>
+                       
+                      </div>
+                  </div>
+                  </div>
          </div>
          <?php 
             }
@@ -283,213 +309,8 @@ function clicked()
       </div>
    </div>
 </section>
-<section hidden="">
-   <div class="container-fluid wrap-container">
-      <div class="row">
-         <div class="col-md-12 text-center my_quel  ">
-            <div class="section-title text-center">
-               <h3 class=" wow fadeIn"><strong >Latest Living Room Posts</strong></h3>
-            </div>
-         </div>
-      </div>
-      <div class="row ">
-         <div class="col-md-4 my-2 wow fadeInLeft">
-            <a href="#">
-               <div class="axb_ale_blog hoverable">
-                  <img src="<?php echo base_url();?>assets/images/blog1.jpg" class="img-fluid">
-                  <div class="blog-content p-3">
-                     <div class=" blog_btn mb-3">
-                        <span>10 February</span><span>&nbsp;&nbsp;&nbsp;-by ALE-IZBA</span>
-                     </div>
-                     <h5 class="text-black">Whistler, British Columbia: Canada’s Champion of Year-Round Alpine Terrain</h5>
-                  </div>
-               </div>
-            </a>
-         </div>
-         <div class="col-md-4 my-2 wow fadeIn">
-            <a href="#">
-               <div class="axb_ale_blog  hoverable">
-                  <img src="<?php echo base_url();?>assets/images/blog2.jpg" class="img-fluid">
-                  <div class="blog-content p-3">
-                     <div class=" blog_btn mb-3">
-                        <span>11 February</span><span>&nbsp;&nbsp;&nbsp;-by ALE-IZBA</span>
-                     </div>
-                     <h5 class="text-black">Looking to Buy a Cottage? Here’s What You Need to Know</h5>
-                  </div>
-               </div>
-            </a>
-         </div>
-         <div class="col-md-4 my-2 wow fadeInRight">
-            <a href="#">
-               <div class="axb_ale_blog  hoverable">
-                  <img src="<?php echo base_url();?>assets/images/blog3.jpg" class="img-fluid">
-                  <div class="blog-content p-3">
-                     <div class=" blog_btn mb-3">
-                        <span>12 February</span><span>&nbsp;&nbsp;&nbsp;-by ALE-IZBA</span>
-                     </div>
-                     <h5 class="text-black ">Celebrating Living Room’s Anniversary With Our Writers’ Favourites</h5>
-                  </div>
-               </div>
-            </a>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-12 text-center mt-5">
-            <a href="" class="btn more_post wow bounceInDown">More Post</a>
-         </div>
-      </div>
-   </div>
-</section>
-<?php
-    /*<section class="my-bg">
-   <div class="container-fluid wrap-container">
-      <div class="row">
-         <div class="col-md-12 text-center my_quel">
-            <div class="section-title text-center">
-               <h3 class="dark-heading"><strong>Popular Searches</strong></h3>
-            </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-12">
-            <div class="outer_home">
-               <div class="row">
-                  <div class="col-md-12 col-xs-12">
-                    <div class="row">
-
-                      <div class="col-sm-4">
-                        <div class="list-heading"><h3 class=""><i class="fa fa-building-o" aria-hidden="true"></i> OFFICE</h3></div>
-                        <ul class="under-list">
-
  
-
-                       <?php
-                         
-                              if(!empty($get_office_searches))
-                              {
-                                $inccc = .20;
-                                foreach($get_office_searches as $key => $value)
-                                {
-                                   
-                                    if($value->location !=='')
-                                  {
-                                     $my_str = ltrim($value->location);
-                                    $escape_with_hyphen  = str_replace(" ","-",$my_str);
-                                     $escape_with_hyphen  = strtolower($escape_with_hyphen);
-                                  ?>
-
-
-                                   
-                                    
-                                    <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s"><a href="<?php echo base_url();?>propertylist/popular/<?php echo $escape_with_hyphen?>/office"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <?php echo strtoupper($value->location)?></a></li> 
-
-                                  
-
-                                   <?php
-                                  }
-
-                                  $inccc = $inccc +.05;
-                                }
-                              }
-                            ?>
-
-
-
-                      </ul>
-
-                      </div>
-
-
-                      <div class="col-sm-4">
-                          <div class="list-heading"><h3 class=""><i class="fa fa-building-o" aria-hidden="true"></i> APARTMENT</h3></div>
-                         <ul class="under-list">
-
  
-                        
-                       <?php
-                         
-                              if(!empty($get_apartment_searches))
-                              {
-                                $inccc = .20;
-                                foreach($get_apartment_searches as $key => $value)
-                                {
-
-                                  if($value->location !=='')
-                                  {
-                                     $my_str = ltrim($value->location);
-                                    $escape_with_hyphen  = str_replace(" ","-",$my_str);
-                                     $escape_with_hyphen  = strtolower($escape_with_hyphen);
-                                  ?>
-
-
-                                   
-                                    
-                                    <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s"><a href="<?php echo base_url();?>propertylist/popular/<?php echo $escape_with_hyphen?>/apartment"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <?php echo strtoupper($value->location)?></a></li> 
-
-                                  
-
-                                   <?php
-                                  }
-                                   
-                                   
-                                  $inccc = $inccc +.05;
-                                }
-                              }
-                            ?>
-
-
-
-                      </ul>
-
-                      </div>
-                      <div class="col-sm-4">
-                            <div class="list-heading"><h3 class=""><i class="fa fa-building-o" aria-hidden="true"></i> VILLAS</h3></div>
-                           <ul  class="under-list" >
-                            <?php
-                        
-                              if(!empty($get_villa_searches))
-                              {
-                                $inccc = .20;
-                                foreach($get_villa_searches as $key => $value)
-                                {
-                                   
-                                  if($value->location !=='')
-                                  {
-                                     $my_str = ltrim($value->location);
-                                    $escape_with_hyphen  = str_replace(" ","-",$my_str);
-                                     $escape_with_hyphen  = strtolower($escape_with_hyphen);
-                                  ?>
-
-
-                                   
-                                    
-                                    <li class="popular-search" data-wow-delay="<?php echo $inccc;?>s"><a href="<?php echo base_url();?>propertylist/popular/<?php echo $escape_with_hyphen?>/villas"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <?php echo strtoupper($value->location)?></a></li> 
-
-                                  
-
-                                   <?php
-                                  }
-                                  $inccc = $inccc +.05;
-                                }
-                              }
-                            ?>
-
-
-
-                      </ul>
-
-                      </div>
-
-                     </div>
-                   </div> 
-               </div>
-            </div>
-         </div>
-          
-      </div>
-   </div>
-</section>*/
-?>
 <section class="my-bg">
    <div class="container-fluid wrap-container">
       <div class="row">
@@ -892,6 +713,46 @@ Property managers can help people in the community find rental accommodation and
       </div>
    </div>
 </section>
+<div class="modal fade" id="PhoneModal" tabindex="-1" role="dialog" aria-labelledby="PhoneModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="mobile_number_content">
+          
+        </div>
+       
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contact Agent</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php 
+          include_once ("contact-form-model.php");
+        ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!--End-->
 <!-- END -->
 <script src="<?php echo base_url();?>assets/js/wow.js"> </script>
@@ -900,6 +761,118 @@ Property managers can help people in the community find rental accommodation and
 </script>
 <!-- banner  text animation -->
 <script type="text/javascript">
+
+      $('#PhoneModal').on('hidden.bs.modal', function (event) {
+         $('.mobile_number_content').html('');
+      });
+      $('#PhoneModal').on('shown.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget) 
+          $('.mobile_number_content').html('');
+           var userid =  button.data("userid");
+           var phone =  button.data("phone");
+           var mobile =  button.data("mobile");
+           console.log(userid,phone,mobile);
+      var html_content= '<table class="table ">';
+
+      var html_content= html_content+'<tr><th colspan="2" class="text-center">Contact Details</td></tr>';  
+      if(phone.length >0)
+      {
+        var href_phone =  phone.replace(" ", "");
+        var html_content= html_content+'<tr><th scope="row">Phone Number : </th><td><a href="tel:'+href_phone+'">'+phone+'</a></td></tr>';  
+      } 
+      if(mobile.length >0)
+      {
+         var href_mobile =  mobile.replace(" ", "");
+        var html_content= html_content+'<tr><th scope="row">Mobile  Number : </th><td><a href="tel:'+href_mobile+'">'+mobile+'</a></td></tr>';  
+      }
+      
+      var html_content= html_content+'</table>';
+      if(phone.length >0 || mobile.length >0)
+      {
+
+      }else
+      {
+          html_content= html_content+'<tr> <td>Not Found</td></tr>'; 
+
+      }
+      $('.mobile_number_content').html(html_content);
+      });
+    
+    $('#emailModal').on('shown.bs.modal', function (event) {
+          var button = $(event.relatedTarget);
+          var comp_img =  button.data("comp_img");
+          var comp_url =  button.data("comp_url");
+          var comp_name =  button.data("comp_name");
+          var property_id =  button.data("userid");
+          var landlord_id =  button.data("landlord_id");
+        $('.company-image').html('<img src="'+comp_img+'"  style="width:100px;height: 60px;background:unset">');
+       $('.company-name').html(comp_name);
+       $('.company-url').attr('href',comp_url);
+       $("#contact-form-model input[name=property_id]").val(property_id);
+       $("#contact-form-model input[name=landlord_id]").val(landlord_id);
+        
+         
+
+    });
+     $('#emailModal').on('hidden.bs.modal', function (event) {
+      $('.company-image').html('');
+      $("#contact-form-model input[name=property_id]").val('');
+       $("#contact-form-model input[name=landlord_id]").val('');
+      $('.company-name').html('');
+      $('.company-url').attr('href',"#");
+      $(this)
+        .find("input,textarea,select")
+           .val('')
+           .end()
+        .find("input[type=checkbox], input[type=radio]")
+           .prop("checked", "")
+           .end();
+     });
+      $("#contact-form-model").submit(function(event){
+          
+       event.preventDefault()
+       
+      var contactForm = $(this);
+      
+          $.ajax({
+               type: 'POST',
+               url: "<?=base_url()?>propertydetails/insert_contactus", 
+               data: contactForm.serialize(),
+               success:function(response){
+                    
+                  if(response.status == 'success') 
+                  {
+                     $(".error_message").removeClass( "text-danger" );
+                     $(".error_message").addClass( "text-success" );
+                     $(".error_message").html(response.message);
+                     window.location.reload();
+                     $("#contact-form-model")
+                      .find("input,textarea,select")
+                         .val('')
+                         .end()
+                      .find("input[type=checkbox], input[type=radio]")
+                         .prop("checked", "")
+                         .end();
+                      
+                  }
+                  if(response.status == 'error')
+                  {
+   
+                     $(".error_message").removeClass( "text-success" );
+                     $(".error_message").addClass( "text-danger" );
+                     $(".error_message").html(response.message); 
+   
+                  }
+                 
+                  
+                   return false;
+               }
+         }); 
+         
+          
+      });
+
    var textWrapper = document.querySelector('.Bannertext');
    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
    
@@ -921,8 +894,7 @@ Property managers can help people in the community find rental accommodation and
      delay: (el, i) => 100 + 30 * i
    });
 </script>
-<!-- Search css ################################################### -->
-<script>
+ <script>
    // Get the modal
    var modal = document.getElementById("myModal");
    
@@ -930,44 +902,16 @@ Property managers can help people in the community find rental accommodation and
    var btn = document.getElementById("myBtn");
    
    // Get the <span> element that closes the modal
-   var span = document.getElementsByClassName("close")[0];
-   
-   // When the user clicks the button, open the modal 
-   // btn.onclick = function() {
-   //   modal.style.display = "block";
-   // }
-   
-   // When the user clicks on <span> (x), close the modal
-   // span.onclick = function() {
-   //   modal.style.display = "none";
-   // }
-   
-   // When the user clicks anywhere outside of the modal, close it
+   var span = document.getElementsByClassName("close")[0]; 
    window.onclick = function(event) {
      if (event.target == modal) {
        modal.style.display = "none";
      }
    }
 </script>
-<!--Modal Script End-->
-<!--Datepicker Script Start-->
-<!-- 
-   <script>
-     $( function() {
-       $( "#datepicker" ).datepicker();
-     } );
-   
-   
-     $( function() {
-       $( "#datepicker1" ).datepicker();
-     } );
-   </script> -->
-<!--Datepicker Script End-->
+ 
 <script type="text/javascript">
-   // window.activeFormName = "form1";
-   // window.activeFormName = "form2";
-   // window.activeFormName = "form3";
-   
+ 
    
    
    
@@ -996,18 +940,7 @@ Property managers can help people in the community find rental accommodation and
      getShortByData();
      return false;
    });
-   });
-   //New Add Today End
-   
-   //New Add Today Start
-   // $(document).ready(function(){
-   //     $("#commercialListForm").submit(function(){
-   //        getCommercialModalData();
-   //        getShortByData();
-   //        return false;
-   //     });
-   // });
-   //New Add Today End
+   }); 
    
    $('#PropertySortBy').on('change', function() {
    allSearchAction();

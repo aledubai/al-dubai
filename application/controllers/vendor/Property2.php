@@ -18,6 +18,7 @@ class Property2 extends BaseController
         $this->load->model('admin/video_model');
         $this->load->model('admin/property_img_model');
         $this->load->model('admin/landlord_model');
+        $this->load->model('admin/settingprofile_model');
     }
 
     
@@ -27,12 +28,18 @@ class Property2 extends BaseController
 
         $data = array();
 
-       
-         
+        $where  = array();
+        $where['status']  = '1';
+        $where['user_id']  =   $this->session->userdata('userId');;
+        $data['settingprofile'] = $this->settingprofile_model->findDynamic($where);
+
+        if(empty($data['settingprofile']))
+        {
+             $this->session->set_flashdata('error', 'Please Complete Your Profile Details. before listing Single of Property.');
+            redirect(base_url().'vendor/setting/profile');
+        }
+
         $data['get_property_list'] =  $this->property2_model->get_property_list();
- 
-
-
         $this->global['pageTitle'] = 'Property2 : Ale-izba';
 
         $this->vendorView("vendor/property2/list", $this->global, $data , NULL);
@@ -74,7 +81,9 @@ class Property2 extends BaseController
         $where['status']  = '1';
          
         $where['field']  = 'id,name';
-        $data['propertyTypeLists'] = $this->type_model->findDynamic($where);
+        $data['propertyTypeLists'] = $this->type_model->findDynamic($where);     
+
+
 
         // Assign list array ======================================
         $data['TypeList']  = $this->type_model->getTypeList();

@@ -16,6 +16,7 @@ class Propertylist extends CI_Controller
         $this->load->model('admin/type_model');
         $this->load->helper('cookie');
         $this->load->library("pagination");
+        $this->perPage =100; 
 
 
         
@@ -383,6 +384,22 @@ class Propertylist extends CI_Controller
     
         //echo " $rowno,$rowperpage ";
         $property_list= $this->propertyList_model->getPropertyList($propertyListData);
+
+        /* pagination new */
+         $this->load->library('pagination'); 
+
+            $conditions = array();
+            $uriSegment = 4; 
+
+            $config['base_url']         = base_url().'propertylist'; 
+            $config['uri_segment']      = $uriSegment; 
+            $config['total_rows']       = count($property_list); 
+            $config['per_page']         = $this->perPage; 
+            $config['use_page_numbers'] = TRUE;
+            $config['reuse_query_string']= TRUE;
+        /* pagination new */
+
+
         //$property_list= $this->propertyList_model->getPropertyList($propertyListData, $pagination["per_page"], $page);
         $data['property_list']=$property_list;
         $data['pagination']= isset($property_list['pagination'])?$property_list['pagination']:'';

@@ -31,7 +31,7 @@
     <section class="content-header">
       <h1>
         <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
-        <small>Control panel</small>
+        <small>Control Panel</small>
       </h1>
     </section>
     

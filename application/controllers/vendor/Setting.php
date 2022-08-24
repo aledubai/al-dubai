@@ -230,6 +230,9 @@ class Setting extends BaseController
 
 
                     $insertData['ProfileEmail']         = $form_data['ProfileEmail'];
+                    $insertData['phone_numbr']          = $form_data['phone_numbr'];
+                    $insertData['mobile_number']        = $form_data['mobile_number'];
+
                     $insertData['ProfileBRN']           = $form_data['ProfileBRN'];
                     $insertData['ProfileName']          = $form_data['ProfileName'];
                     $insertData['ProfileNameAr']        = $form_data['ProfileNameAr'];
@@ -261,22 +264,14 @@ class Setting extends BaseController
 
                          $this->session->set_flashdata('success', 'Profile Saved Successfully');
 
-                         // Ajax Code Not Working
-                         //$response = array(
-                            //'status' => 'success',
-                            //'message' => "<h3 >Profile Added successfully.</h3>"
-                        //);
+                          
                     }
                     else
                     { 
 
                         $this->session->set_flashdata('error', 'Profile Addition failed');
 
-                        // Ajax Code Not Working
-                        //$response = array(
-                            //'status' => 'error',
-                            //'message' => "<h3>Profile Addition failed.</h3>"
-                        //);
+                         
                     }
 
                 }
@@ -288,10 +283,7 @@ class Setting extends BaseController
 
                  } 
 
-                 // Ajax Code Not Working 
-                //$this->output
-                    //->set_content_type('application/json')
-                    //->set_output(json_encode($response));
+                 
         }
 
 
@@ -672,6 +664,37 @@ class Setting extends BaseController
             redirect('vendor/agency/edit/'.$insertData['id']);
           }  
         
+    }
+        public function check_slug()
+    { 
+        
+         $form_data  = $this->input->post();
+          if(isset($form_data['slug_url']))
+         {
+                $where = array();
+                $where['status'] = '1';
+                $slug_url = strtolower($form_data['slug_url']);;
+                $where['field'] = 'id';
+                $and_condition ='';
+                if(isset($form_data['id']) && $form_data['id'] !=='')
+                {
+                    $and_condition = " AND user_id !='".$form_data['id']."'";
+                }else
+                {
+                    $and_condition = " ";
+                }
+                $wheres  = "  status = '1' AND  slug_url= '$slug_url' $and_condition";
+            $result = $this->settingprofile_model->sqls_query($wheres);
+            if(count($result) > 0)
+            {
+                echo 'slug_exist';
+            }else
+            {
+                 echo 'slug_available';
+            }
+         }
+
+
     }
 
 

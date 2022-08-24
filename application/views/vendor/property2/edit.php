@@ -489,7 +489,7 @@
                                     <div class="form-group">
                                         <div class="col-sm-offset-3 col-sm-9">
                                             <div class="checkbox">
-                                                <button type="button" class="btn btn-default btn-sm btn-xs btn-default-rc btnAddFeature"><strong>+</strong> Featurs (0)</button>
+                                                <button type="button" class="btn btn-default btn-sm btn-xs btn-default-rc btnAddFeature"><strong>+</strong> Features (0)</button>
                                                 <button type="button" class="btn btn-default btn-sm btn-xs btn-default-rc btnExtraInfo"><strong>+</strong> Extra Info</button>
 
                                                 <div class="btn-group pull-right">

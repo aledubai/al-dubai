@@ -201,9 +201,9 @@
                                 <h6><b>Location & Price</b></h6>
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="type" class="col-sm-3 control-label">Type:<span class="text-danger">*</span></label>
+                                        <label for="type" class="col-sm-3 control-label">Type:</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control input-sm" required="" name="type" id="type">
+                                            <select class="form-control input-sm" name="type" id="type">
                                                 <option value="">Select</option>
                                                 <?php foreach ($TypeList as $k =>$v){
                                                         ?>
@@ -214,7 +214,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Rent" class="col-sm-3 control-label">Purpose:<span class="text-danger">*</span></label>
+                                        <label for="Rent" class="col-sm-3 control-label">Purpose:</label>
                                         <div class="col-sm-9">
                                             <p style="margin: 0px">
                                                     <?php
@@ -235,10 +235,10 @@
                                                  
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="Rent"   class="col-sm-3 control-label"></label>
                                         <div class="col-sm-9">
-                                            <select class="form-control input-sm" required="" name="saleList" id="saleList">
+                                            <select class="form-control input-sm"  name="saleList" id="saleList">
                                                 <option  value="">Select Completion Status</option>
                                                 <?php foreach ($saleList as $k =>$v){
                                                         ?>
@@ -246,7 +246,7 @@
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <label for="location" class="col-sm-3 control-label">Location:</label>
                                         <div class="col-sm-9">
@@ -259,9 +259,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="emirate" class="col-sm-3 control-label">Emirate:<span class="text-danger">*</span></label>
+                                        <label for="emirate" class="col-sm-3 control-label">Emirate:</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control input-sm" required="" name="emirate" id="emirate">
+                                            <select class="form-control input-sm"  name="emirate" id="emirate">
                                                 <option  value="">Select</option>
                                                 <?php foreach ($EmirateList as $k =>$v){
                                                         ?>
@@ -272,9 +272,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="community" class="col-sm-3 control-label">Community:<span class="text-danger">*</span></label>
+                                        <label for="community" class="col-sm-3 control-label">Community:</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control input-sm" required="" name="community" id="community">
+                                            <select class="form-control input-sm"  name="community" id="community">
                                                 <option value="">Select Emirate First</option>
                                                <?php foreach ($CommunityList as $k =>$v){
                                                         ?>
@@ -320,11 +320,11 @@
                                         </div>
                                     </div>
                                      <div class="form-group">
-                                        <label for="rent" class="col-sm-3 control-label">Price:<span class="text-danger">*</span></label>
+                                        <label for="rent" class="col-sm-3 control-label">Price:</label>
                                         <div class="col-sm-9">
                                              
                                             <div class="input-group input-group-sm">
-                                                <input type="text" required="" class="form-control input-sm numberOnly price" name="rent" id="rent" required >
+                                                <input type="text"  class="form-control input-sm numberOnly price" name="rent" id="rent"  >
                                                     <span class="input-group-btn">
                                                       <button type="button" class="btn btn-secondary btn-flat">AED</button>
                                                     </span>
@@ -422,9 +422,9 @@
                                     </div>
                                      
                                     <div class="form-group">
-                                        <label for="developer" class="col-sm-3 control-label">Developer:<span class="text-danger">*</span></label>
+                                        <label for="developer" class="col-sm-3 control-label">Developer:</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control input-sm" required="" name="developer" id="developer">
+                                            <select class="form-control input-sm"  name="developer" id="developer">
                                                 <option value="">Select</option>
                                                   <?php foreach ($DeveloperList as $k =>$v){
                                                         ?>
@@ -449,11 +449,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="area" class="col-sm-3 control-label">Area:<i class="fa   fa-info-circle text-rc"></i><span class="text-danger">*</span></label>
+                                        <label for="area" class="col-sm-3 control-label">Area:<i class="fa   fa-info-circle text-rc"></i></label>
                                         <div class="col-sm-9">
                                              
                                             <div class="input-group input-group-sm">
-                                                <input type="text" required="" class="form-control input-sm numberDotAndCross" name="area" id="area" required >
+                                                <input type="text"  class="form-control input-sm numberDotAndCross" name="area" id="area"  >
                                                     <span class="input-group-btn">
                                                       <button type="button" class="btn btn-secondary btn-flat">sqft</button>
                                                     </span>
@@ -538,7 +538,7 @@
                                         <div class="form-group">
                                             <label for="EnTitle" class="col-sm-3 control-label">Title:</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control input-sm"  type="text"  name="EnTitle" id="EnTitle" placeholder="Title" required  />
+                                                <input class="form-control input-sm"  type="text"  name="EnTitle" id="EnTitle" placeholder="Title"   />
                                             </div>
                                         </div>
                                          <div class="form-group">
@@ -546,7 +546,7 @@
                                                
                                                 <div class="col-sm-9">
                                                      <span id="msg_slug"></span>
-                                                <input type="text" id="slug_url" name ="slug_url" class="form-control" value=""  readonly  onkeyup="check_slug()" required="required"  >
+                                                <input type="text" id="slug_url" name ="slug_url" class="form-control" value=""  readonly  onkeyup="check_slug()" =""  >
                                                 
                                                 <span class="text-danger" onclick="change_slug_btn()">Change</span>
                                                  </div>
@@ -671,9 +671,9 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="assign_to" class="col-sm-3 control-label">Assign&nbsp;To:<i class="fa fa-info-circle text-rc"></i><span class="text-danger">*</span></label>
+                                        <label for="assign_to" class="col-sm-3 control-label">Assign&nbsp;To:<i class="fa fa-info-circle text-rc"></i></label>
                                         <div class="col-sm-9">
-                                            <select required class="form-control input-sm" name="assign_to" id="assign_to" title="Assign To">
+                                            <select  class="form-control input-sm" name="assign_to" id="assign_to" title="Assign To">
                                                   <option value="">Select</option>
                                                  <?php foreach ($listAssignTo as $k =>$v){
                                                         ?>
@@ -686,9 +686,9 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="user_id" class="col-sm-3 control-label ">Agency To:<span class="text-danger">*</span></label>
+                                        <label for="user_id" class="col-sm-3 control-label ">Agency To:</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control input-sm" name="user_id" id="user_id" required>
+                                            <select class="form-control input-sm" name="user_id" id="user_id" >
                                                  <option value="">Select</option>
                                                  <?php 
 
