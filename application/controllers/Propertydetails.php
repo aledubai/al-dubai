@@ -42,15 +42,15 @@ class Propertydetails extends BaseController
     public function index()
     {
       // Onload Comon Page Data ============================= 
-    	$data = array();
+        $data = array();
       // Define =========================== 
        $data["title"]="Ale-izba";
         
-	 return redirect(base_url().'propertylist');
+     return redirect(base_url().'propertylist');
         
     } 
-	
-	  public function public_property($slug_url='')
+    
+      public function public_property($slug_url='')
     {
          $where  = array();
         $where['table']     = 'property';
@@ -96,6 +96,7 @@ public function insert_contactus()
         else
         {
           
+           
         $from_email     = "info@aleizba.com"; 
         $from_pass      = 'Ask@ry123';
         $contact_name   = $this->input->post('contact_name'); 
@@ -121,6 +122,8 @@ public function insert_contactus()
         'smtp_user' => $from_email,
         'smtp_pass' => $from_pass,
         'mailtype'  => 'html',
+        'smtp_crypto'  => 'ssl',
+        'smtp_timeout'  => '30',
         'charset'   => 'utf-8'
         );
         $this->email->initialize($config);
@@ -130,11 +133,13 @@ public function insert_contactus()
  
 
         $this->email->to($to_email);
-        $this->email->subject('Email For Wnquiry'); 
-        $this->email->message('Hi, $contact_name  WE Will Be Back Soon With Your Regarding Coctact Details . $to_message ');
+        $this->email->subject('Email For Wnquiry');
+        $this->email->from($from_email, 'Aleizba');
+
+        $this->email->message('Hi, '.$contact_name.'  WE Will Be Back Soon With Your Regarding Coctact Details '. $to_message);
  
         /*if($this->email->send())*/
-        if($this->email->send())
+        if(@$this->email->send())
         {
 
 
@@ -506,7 +511,7 @@ public function insert_contactus()
         $where['user_id']  = $currentObj->user_id;
         //print_r($currentObj->user_id);
         $data["company_details"] = $this->propertyDetails_model->findDynamic($where);
-		 
+         
         $data["company_details"] = $data["company_details"][0];
 
 
