@@ -137,7 +137,7 @@ public function insert_contactus()
         $this->email->from($from_email, 'Aleizba');
         $messates = 'Hi, '.$contact_name.'  WE Will Be Back Soon With Your Regarding Coctact Details '. $to_message;
         $html_template = get_contact_template();
-        $bgurls =  base_url().'images/letter-head.jpg';
+        $bgurls =  base_url().'images/letter-head-1.jpg';
         $html_template = str_replace("##bg_img##",$bgurls,$html_template);
         $html_template = str_replace("##message##",$messates,$html_template);
 
