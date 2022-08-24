@@ -182,7 +182,7 @@ class Propertylist extends CI_Controller
             $maxPrice=  $form_data['maxPrice'];
         } 
 
-        if(isset($form_data['bed']) and $form_data['bed'] !=='')
+        if(isset($form_data['bed']) and $form_data['bed']> 0)
         {
             $bed=  $form_data['bed'];
         }

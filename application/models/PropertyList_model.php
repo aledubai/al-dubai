@@ -377,15 +377,14 @@ class PropertyList_model extends Base_model
                }
             }
 
-           // print_r($this->db->last_query());
-
+ 
             if($bath!== null)
             {
                 $bathData= explode('_', $bath);
                 if ($bathData[1]) {
                         $this->db->where('property.baths>=', $bathData[0]);
                     } 
-                    else if($bedData[0]) 
+                    else if($bathData[0]) 
                     {
                         $this->db->where('property.baths=', $bathData[0]);
                     } 
