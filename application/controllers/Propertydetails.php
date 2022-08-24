@@ -141,8 +141,7 @@ public function insert_contactus()
         $html_template = str_replace("##bg_img##",$bgurls,$html_template);
         $html_template = str_replace("##message##",$messates,$html_template);
 
-         $html_template = str_replace("##site_logo##",base_url().'assets/front-end/images/logo/ut-logo.png',$html_template);die;
-
+ 
 
         $this->email->message($html_template);
  
