@@ -131,7 +131,7 @@ public function insert_contactus()
 
         $this->email->to($to_email);
         $this->email->subject('Email For Wnquiry'); 
-        $this->email->message('Hi, $contact_name  WE Will Be Back Soon With Your Regarding Coctact Details . $to_message '); */
+        $this->email->message('Hi, $contact_name  WE Will Be Back Soon With Your Regarding Coctact Details . $to_message ');
  
         /*if($this->email->send())*/
         if(@$this->email->send())
