@@ -133,10 +133,18 @@ public function insert_contactus()
  
 
         $this->email->to($to_email);
-        $this->email->subject('Email For Wnquiry');
+        $this->email->subject('Email For Enquiry');
         $this->email->from($from_email, 'Aleizba');
+        $messates = 'Hi, '.$contact_name.'  WE Will Be Back Soon With Your Regarding Coctact Details '. $to_message;
+        $html_template = get_contact_template();
+        $bgurls =  base_url().'images/letter-head.jpg';
+        $html_template = str_replace("##bg_img##",$bgurls,$html_template);
+        $html_template = str_replace("##message##",$messates,$html_template);
 
-        $this->email->message('Hi, '.$contact_name.'  WE Will Be Back Soon With Your Regarding Coctact Details '. $to_message);
+         $html_template = str_replace("##site_logo##",base_url().'assets/front-end/images/logo/ut-logo.png',$html_template);die;
+
+
+        $this->email->message($html_template);
  
         /*if($this->email->send())*/
         if(@$this->email->send())

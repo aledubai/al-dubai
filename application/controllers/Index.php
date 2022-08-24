@@ -32,11 +32,14 @@ class Index extends CI_Controller
      * Index Page for this controller.
      */
     // Index =============================================================
-
-
+    
     public function index()
     {
-    
+
+    if($this->input->get('template'))
+    {
+      echo get_contact_template();die;
+    }
       // Onload Comon Page Data ============================= 
 
     	$data = array();
@@ -59,6 +62,7 @@ class Index extends CI_Controller
    
     }  
 
+ 
 
     public function cookieupdate()
     {
