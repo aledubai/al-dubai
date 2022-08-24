@@ -96,8 +96,8 @@ public function insert_contactus()
         else
         {
           
-        $from_email     = "pixel4video@gmail.com"; 
-        $from_pass      = 'Pixel$#987';
+        $from_email     = "info@aleizba.com"; 
+        $from_pass      = 'Ask@ry123';
         $contact_name   = $this->input->post('contact_name'); 
         $to_email       = $this->input->post('contact_email'); 
         $to_mobile      = $this->input->post('contact_mobile'); 
@@ -114,9 +114,9 @@ public function insert_contactus()
         $this->load->library('email');
 
         //SMTP & mail configuration
-        /*$config = array(
+        $config = array(
         'protocol'  => 'smtp',
-        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_host' => 'aleizba.com',
         'smtp_port' => 465,
         'smtp_user' => $from_email,
         'smtp_pass' => $from_pass,
@@ -131,10 +131,10 @@ public function insert_contactus()
 
         $this->email->to($to_email);
         $this->email->subject('Email For Wnquiry'); 
-        $this->email->message('Hi, $contact_name  WE Will Be Back Soon With Your Regarding Coctact Details . $to_message ');*/
+        $this->email->message('Hi, $contact_name  WE Will Be Back Soon With Your Regarding Coctact Details . $to_message ');
  
         /*if($this->email->send())*/
-        if(1)
+        if(@if($this->email->send())
         {
 
 
