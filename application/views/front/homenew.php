@@ -47,7 +47,7 @@
          </div>
          <!-- padMY -->
       </div>
-      <div class="container my-5">
+      <div class="container-fluid my-5">
          <div class="row">
             <div class="col-md-6">
                <ul class="nav nav-tabs" id="myTab1" role="tablist">
@@ -233,11 +233,12 @@ function clicked()
                  $ttitle = str_replace(')', '', $ttitle); 
                  $ttitle = str_replace(' ', '-', $ttitle);
                  $ttitle = str_replace(',', '', $ttitle); 
+                 $arra_data = array();
                  
+                 ///$properydatasingle = propertyWidged($arra_data);
                ?> 
          <div class="col-md-3 col-xs-12 mainDiv mt-4">
-            <!-- <a href="<?php echo base_url();?>propertydetails/get_details/<?=base64_encode($value->id)?>/<?=$ttitle?>" class="propertyDetails"> -->
-               <div class="AleBoxes">
+                <div class="AleBoxes">
             <a href="<?php echo base_url();?>propertydetails/<?=($value->slug_url)?>" class="propertyDetails">
               
                   <?php
@@ -276,6 +277,11 @@ function clicked()
                         </span>
                         <?php
                       }?>
+
+                        <span class="ale_faci">&nbsp;0&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Parking</span>
+                        </span>
+                        
                         
                   </div>
                   
@@ -286,17 +292,22 @@ function clicked()
             </a>
 
              <div class="row m-2 mb-3">
-                    <div class="col-sm-8">
-                      <button type="button contact-by-call" data-toggle="modal" data-target="#PhoneModal" data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>" class="btn btn-primary btn-sm home_meet_btn m-0"> <i class="fa fa-phone" aria-hidden="true"></i> Call</button>
-                      <button type="button contact-by-email" data-toggle="modal" data-target="#emailModal"  data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>"  data-landlord_id="<?php echo $value->landlord_id;?>"  data-comp_name="<?php echo $value->comp_name;?>"  data-comp_img="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>" data-comp_url="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>" class="btn btn-secondary btn-sm home_meet_btn m-0"> <i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</button>  
+                    <div class="col-12 feature-box">
+                      <div class="col-6 butns">  
+                      <button type="button contact-by-call" data-toggle="modal" data-target="#PhoneModal" data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>" class="btn btn-primary btn-sm home_meet_btn m-0 btn-block"> <i class="fa fa-phone" aria-hidden="true"></i> Call</button>
+                      </div>
+
+                       <div class="col-6 butns">
+                      <button type="button contact-by-email" data-toggle="modal" data-target="#emailModal"  data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>"  data-landlord_id="<?php echo $value->landlord_id;?>"  data-comp_name="<?php echo $value->comp_name;?>"  data-comp_img="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>" data-comp_url="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>" class="btn btn-secondary btn-sm home_meet_btn m-0 btn-block"> <i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</button>  
+                   </div>
                      
                       </div>
-                      <div class="col-sm-4">
+                      <!-- <div class="col-sm-4">
                         <a href="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>">
-                          <img src="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>"  style="width:100%;height:60px;background:unset">
+                          <img src="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>"  style="max-width: 50px;background: unset;max-height: 50px;">
                         </a>
                        
-                      </div>
+                      </div> -->
                   </div>
                   </div>
          </div>
@@ -713,9 +724,10 @@ Property managers can help people in the community find rental accommodation and
       </div>
    </div>
 </section>
+
 <div class="modal fade" id="PhoneModal" tabindex="-1" role="dialog" aria-labelledby="PhoneModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+    <div class="modal-content agent-modal">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -752,7 +764,6 @@ Property managers can help people in the community find rental accommodation and
   </div>
 </div>
 
-
 <!--End-->
 <!-- END -->
 <script src="<?php echo base_url();?>assets/js/wow.js"> </script>
@@ -770,25 +781,24 @@ Property managers can help people in the community find rental accommodation and
         var button = $(event.relatedTarget) 
           $('.mobile_number_content').html('');
            var userid =  button.data("userid");
-           var phone =  button.data("phone");
-           var mobile =  button.data("mobile");
-           console.log(userid,phone,mobile);
+           var phones =  button.data("phone").toString();
+           var mobile =  button.data("mobile").toString();
+           console.log((userid.length));
+           console.log((mobile.length));
       var html_content= '<table class="table ">';
 
-      var html_content= html_content+'<tr><th colspan="2" class="text-center">Contact Details</td></tr>';  
-      if(phone.length >0)
-      {
-        var href_phone =  phone.replace(" ", "");
-        var html_content= html_content+'<tr><th scope="row">Phone Number : </th><td><a href="tel:'+href_phone+'">'+phone+'</a></td></tr>';  
+      var html_content= html_content+'';  
+      if(phones.length >0)
+      { 
+        var html_content= html_content+'<tr><th scope="row">Phone Number : </th><td><a href="tel:'+phones+'">'+phones+'</a></td></tr>';  
       } 
       if(mobile.length >0)
-      {
-         var href_mobile =  mobile.replace(" ", "");
-        var html_content= html_content+'<tr><th scope="row">Mobile  Number : </th><td><a href="tel:'+href_mobile+'">'+mobile+'</a></td></tr>';  
+      { 
+        var html_content= html_content+'<tr><th scope="row">Mobile  Number : </th><td><a href="tel:'+mobile+'">'+mobile+'</a></td></tr>';  
       }
       
       var html_content= html_content+'</table>';
-      if(phone.length >0 || mobile.length >0)
+      if(phones.length >0 || mobile.length >0)
       {
 
       }else
@@ -973,7 +983,8 @@ Property managers can help people in the community find rental accommodation and
    var maxPrice = $('[name*="maxPrice"]' ).val();
    var bed = $('[name*="bed"]' ).val();
    var bath = $('[name*="bath"]' ).val();
-   window.searchUrl = window.searchUrl+"search="+search+"&minPrice="+minPrice+"&maxPrice="+maxPrice+"&bed="+bed+"&bath="+bath;
+   var purpose = $('[name*="purpose"]' ).val();
+   window.searchUrl = window.searchUrl+"search="+search+"&minPrice="+minPrice+"&maxPrice="+maxPrice+"&bed="+bed+"&bath="+bath+"&purpose="+purpose;
    window.location.href=searchUrl;
    }
    

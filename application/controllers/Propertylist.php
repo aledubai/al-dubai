@@ -21,6 +21,84 @@ class Propertylist extends CI_Controller
 
         
     }
+    public function query($string)
+    {
+        $beds = null;
+        $bath = null;
+        $type = null;
+        $purpose = null;
+        $city = null;
+         $bedrooms = explode('-', $string);
+        foreach ($bedrooms as $key => $value) 
+        {
+            switch ($value) {
+                     case 'bathroom':
+                          $bath = @$bedrooms[$key-1].'_';
+                         break;
+                     
+                      case 'bedroom':
+                         
+                         $beds = @$bedrooms[$key-1].'_';
+                         break;
+                     
+                     case 'apartments':
+                        $type = 'apartment';
+                         break;
+                     case 'apartment':
+                        $type = 'apartment';
+                         break;
+                     
+                      case 'offices':
+                        $type = 'office';
+                         break;
+                     case 'office':
+                        $type = 'office';
+                         break;
+                     case 'villas':
+                        $type = 'villas';
+                         break;
+                    case 'villa':
+                        $type = 'villas';
+                         break;
+                     
+                      case 'for':
+                         $purpose =@$bedrooms[$key+1];
+                         break;
+                    case 'in':
+                         $city =@$bedrooms[$key+1];
+                         break;
+                     
+                     default:
+                          
+                         break;
+                 }     
+        }
+
+
+        switch ($type) {
+          case 'office':
+              $popular['str_type'] = 10;
+            break;
+          case 'apartment':
+            $popular['str_type'] = 2;
+            break;
+          case 'villas':
+            $popular['str_type'] = 1;
+            break;
+          default:'';
+         }
+      
+     
+     
+
+     $popular['str_query'] = $string ;
+     $popular['str_search'] = $city ;
+     $popular['str_beds'] = $beds ;
+     $popular['str_bath'] = $bath ;
+     $popular['str_purpose'] = $purpose ;
+    $this->index($popular);
+      
+    }
 	// Index =============================================================
 
    public function popular($slugs='',$type='')
@@ -94,10 +172,12 @@ class Propertylist extends CI_Controller
     // Onload Common Page Data ============================= 
         $data = array();
          $form_data  = $this->input->get();
-        if(@$popular['search'] !=='')
+        if(isset($popular['search']) && @$popular['search'] !=='')
         {
             $form_data['search'] = $popular['search'];
         }
+
+
         $search=null;
         $price=null;
         $city=null;
@@ -107,6 +187,7 @@ class Propertylist extends CI_Controller
         $bath=null;
         $type=null;
         $community = null;
+        $purpose = null;
 
 
       // Onload Commercial Common Page Data=================================
@@ -155,6 +236,81 @@ class Propertylist extends CI_Controller
             $rowno = ($form_data['per_page']-1) * $rowperpage;
         }
 
+
+        
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+        /*search by string*/
+
+         
+        if(isset($popular['str_purpose']) && $popular['str_purpose'] !=='')
+        {
+             $str_query       = $popular['str_query'];
+            $where = array();
+            $where['table'] = 'ae_rel_purpose_list';
+            $where['name'] =  ucwords($popular['str_purpose']);
+            $purpose_list = $this->propertyList_model->findDynamic($where);
+            if(!empty($purpose_list))
+            {
+                $resssulr = $purpose_list[0];
+                $purpose=$resssulr->id; 
+            }else
+            {
+                $purpose=null;    
+            }
+
+            
+     
+        }
+        if(isset($popular['str_search']) && $popular['str_search'] !=='')
+        {
+            $search=  $popular['str_search'];
+             
+        }
+        if(isset($popular['str_beds']) && $popular['str_beds'] !=='')
+        {
+            $bed=  $popular['str_beds'];
+     
+        }
+        if(isset($popular['str_bath']) && $popular['str_bath'] !=='')
+        {
+            $bath=  $popular['str_bath'];
+     
+        }
+        if(isset($popular['str_type']) && $popular['str_type'] !=='')
+        {
+           
+            $type =  $popular['str_type'];
+     
+        }
+
+         /*search by string*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // Pagination Start
         //print_r($form_data);
         $page = $this->input->get('page');
@@ -163,6 +319,11 @@ class Propertylist extends CI_Controller
         if(isset($form_data['PropertySortBy']) and $form_data['PropertySortBy'] !=='')
         {
             $price=  $form_data['PropertySortBy'];
+     
+        }
+        if(isset($form_data['purpose']) and $form_data['purpose'] !=='')
+        {
+            $purpose=  $form_data['purpose'];
      
         }
 
@@ -331,7 +492,32 @@ class Propertylist extends CI_Controller
             
             
         }
-	  
+        $str_name = '';
+        if(!empty($popular['str_query']))
+        {
+             
+            $str_query       = $popular['str_query'];
+            $where = array();
+            $where['table'] = 'ae_query_result_list';
+            $where['slug'] =  $str_query;
+            $querys = $this->propertyList_model->findDynamic($where);
+             //print_r($querys);
+            if(!empty($querys))
+            {
+                $resssulr = $querys[0];
+                $meta_title         = $resssulr->meta_title;
+                $meta_description   = $resssulr->meta_description;
+                $meta_keyword       = $resssulr->meta_description;
+                $str_name       = ucwords($resssulr->name);
+
+                 
+            }
+            
+            
+            
+        }
+
+
 
         $propertyListData= array();
         $propertyListData['price']=$price;
@@ -342,6 +528,7 @@ class Propertylist extends CI_Controller
         $propertyListData['bath']=$bath;
         $propertyListData['type']=$type;
         $propertyListData['community']=$community;
+        $propertyListData['purpose']=$purpose;
 
     // Page Commercial Search==============================
 
@@ -384,7 +571,9 @@ class Propertylist extends CI_Controller
     
         //echo " $rowno,$rowperpage ";
         $property_list= $this->propertyList_model->getPropertyList($propertyListData);
-
+        /*echo "<pre>";
+    print_r($this->db->last_query());    
+echo "<pre>";*/
         /* pagination new */
          $this->load->library('pagination'); 
 
@@ -415,6 +604,7 @@ class Propertylist extends CI_Controller
 
         $data["communityname"]      = $communityname;
         $data["typename"]           = $typename;
+        $data["str_name"]           = $str_name;
 
         $data["meta_title"]      = $meta_title;
         $data["meta_description"]= $meta_description;

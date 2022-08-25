@@ -1,3 +1,12 @@
+<?php
+/*$this->load->model('admin/type_model');
+ 
+  $data["purposelist"] = $this->type_model->PurposeList();
+  print_r($data["purposelist"]);*/
+  $ci =& get_instance();
+  $ci->load->model('admin/type_model');
+  $purposelist = $ci->type_model->PurposeList(); 
+?>
 <!--Style Tag Starts-->
 <style type="text/css">
    /* The Modal (background) */
@@ -100,18 +109,18 @@
 .select-form:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #ced4da!important;
+    border-color: #fff!important;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 0%)!important;
   }
 
-  .formLeft{
+  /*.formLeft{
         position: relative;
     left: 7rem;
   }
   .ale-izba_placeholder{
     width: 190%;
-  }
+  }*/
 
 
   @media (max-width: 500px) 
@@ -140,12 +149,33 @@
                   <form name="form1" action="<?=base_url()?>propertylist/index" method="GET" id="propertylistForm" 
                     onsubmit="return false">
                      <div class="row">
-                        <div class="col-sm-6 col-xs-12">
+                        <div class="col-sm-8 col-xs-12">
                            <div class="row">
-                              <div class="col-sm-4 col-xs-6">
+                              <div class="col-md-3 col-xs-6">
                                  <input type="text" placeholder="City,Neighbourhood or MLS Number" name="search" id="search" class="form-control ale-izba_placeholder" value="<?php if(isset($_GET['search'])){ echo $_GET['search'];}?>" >
                               </div>
-                              <div class="col-sm-4 col-xs-6 formLeft">
+                               <div class="col-md-3 col-xs-12 formLeft">
+                                 <div class="p-2 ">
+                                    <select data-placeholder="Purpose" class="select-form" name="purpose" tabindex="2 ">
+                                       <option value="">Purpose</option>
+                                       <?php
+                                       $option = '';
+                                        foreach ($purposelist as $key => $value)
+                                        {
+                                            $selecteds = '';
+                                          if(isset($_GET['purpose']) && $_GET['purpose'] ==$key)
+                                                {
+                                                  $selecteds = 'selected';
+                                                }
+                                            $option .= '<option value="'.$key.'" '.$selecteds.'>'.($value).'</option>';
+                                        }
+                                        echo $option;
+                                       ?>
+                                       
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-xs-6 formLeft">
                                  <div class="p-2 ">
                                     <select data-placeholder="Min Price" class="select-form" name="minPrice" tabindex="2 ">
                                        <option value="">Min Price</option>
@@ -155,7 +185,7 @@
                                              for ($i = 0; $i < 12; $i++) {
                                               $startAmount=25000;
                                                 $selecteds = '';
-                                                if(isset($_GET['minPrice']) && $_GET['minPrice'] ==$startAmount*$i)
+                                                if(isset($_GET['minPrice']) && $_GET['minPrice'] ==$startAmount*$i  && $_GET['maxPrice'] >0)
                                                 {
                                                   $selecteds = 'selected';
                                                 }
@@ -167,7 +197,7 @@
                                     </select>
                                  </div>
                               </div>
-                              <div class="col-sm-4  col-xs-6 formLeft">
+                              <div class="col-md-3  col-xs-6 formLeft">
                                  <div class="p-2 ">
                                     <select data-placeholder="Max Price" class=" select-form" name="maxPrice" tabindex="2 ">
                                        <option value="">Max Price</option>
@@ -179,7 +209,7 @@
                                           
                                           
                                                 $selecteds = '';
-                                                if(isset($_GET['maxPrice']) && $_GET['maxPrice'] ==$startAmount*$i)
+                                                if(isset($_GET['maxPrice']) && $_GET['maxPrice'] ==$startAmount*$i && $_GET['maxPrice'] >0)
                                                 {
                                                 $selecteds = 'selected';
                                                 }
@@ -192,9 +222,10 @@
                               </div>
                            </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                            <div class="row">
-                              <div class="col-sm-4 col-xs-12 formLeft">
+
+                              <div class="col-md-5 col-xs-12 formLeft">
                                  <div class="p-2 ">
                                     <select data-placeholder="Beds" class="select-form" name="bed" tabindex="2 ">
                                        <option value="0_">Beds</option>
@@ -203,7 +234,7 @@
                                           for ($i = 0; $i < 6; $i++) {
                                              
                                              $selecteds = '';
-                                                  if(isset($_GET['bed']) && $_GET['bed'] == $i)
+                                                  if(isset($_GET['bed']) && $_GET['bed'] == "'.$i.'_")
                                                   {
                                                   $selecteds = 'selected';
                                                   }
@@ -238,7 +269,7 @@
                                  <!-- end -->
                                  <!-- Bath -->
                               </div>
-                              <div class="col-sm-4 col-xs-12 formLeft">
+                              <div class="col-md-5 col-xs-12 formLeft">
                                  <div class="p-2 ">
                                     <select data-placeholder="Baths" class="select-form" name="bath" tabindex="2 ">
                                        <option value="0_">Baths</option>
@@ -267,20 +298,12 @@
                                           }
                                             echo  $option ;
                                           ?> 
-                                       <!-- <option value="1_">1</option>
-                                          <option value="1_+">1+</option>
-                                          <option value="2_">2</option>
-                                          <option value="2_+">2+</option>
-                                          <option value="3_">3</option>
-                                          <option value="3_+">3+</option>
-                                          <option value="4_">4</option>
-                                          <option value="4_+">4+</option>
-                                          <option value="5_">5</option>
-                                          <option value="5_+">5+</option> -->
+                                       
                                     </select>
                                  </div>
                               </div>
-                              <div class="col-sm-4  col-xs-12  ">
+                               <input type="hidden" name="PropertySortBy" value="DescDate">
+                              <div class="col-md-2 col-xs-12  ">
                                  <div class="p-2">
                                     <button <?php echo $searchDisable;?> name="searchBtn" id="searchBtn" style="border: 0px solid;cursor: pointer;" type="submit" class="searchAleForm" ><i class="fa fa-search" aria-hidden="true"></i></button>
                                  </div>
@@ -307,12 +330,33 @@
                   <form name="form2" action="<?=base_url()?>propertylist/index" method="GET" id="propertylistForm1" 
                     onsubmit="return false">
                      <div class="row">
-                        <div class="col-sm-6 col-xs-12">
+                        <div class="col-md-8 col-xs-12">
                            <div class="row">
-                              <div class="col-sm-4 col-xs-6">
+                              <div class="col-md-3 col-xs-6">
                                  <input type="text" placeholder="City,Neighbourhood or MLS Number" name="searchCom" id="searchCom" class="form-control ale-izba_placeholder" value="<?php if(isset($_GET['searchCom'])){ echo $_GET['searchCom'];}?>" >
                               </div>
-                              <div class="col-sm-4 col-xs-6 formLeft">
+                              <div class="col-md-3 col-xs-12 formLeft">
+                                 <div class="p-2 ">
+                                    <select data-placeholder="Purpose" class="select-form" name="purpose" tabindex="2 ">
+                                       <option value="">Purpose</option>
+                                       <?php
+                                       $option = '';
+                                        foreach ($purposelist as $key => $value)
+                                        {
+                                            $selecteds = '';
+                                          if(isset($_GET['purpose']) && $_GET['purpose'] ==$key)
+                                                {
+                                                  $selecteds = 'selected';
+                                                }
+                                            $option .= '<option value="'.$key.'" '.$selecteds.'>'.($value).'</option>';
+                                        }
+                                        echo $option;
+                                       ?>
+                                       
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-xs-6 formLeft">
                                  <div class="p-2 ">
                                     <select data-placeholder="Min Price" class="select-form" name="minPriceCom" tabindex="2 ">
                                        <option value="">Min Price</option>
@@ -334,7 +378,7 @@
                                     </select>
                                  </div>
                               </div>
-                              <div class="col-sm-4  col-xs-6 formLeft">
+                              <div class="col-md-3  col-xs-6 formLeft">
                                  <div class="p-2 ">
                                      <select data-placeholder="Max Price" class="select-form" name="maxPriceCom" tabindex="2 ">
                                        <option value="">Max Price</option>
@@ -359,9 +403,9 @@
                               </div>
                            </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                            <div class="row">
-                              <div class="col-sm-4 col-xs-12 formLeft">
+                              <div class="col-md-5 col-xs-12 formLeft">
                                   <div class="p-2 ">
                                     <select data-placeholder="Building Size" class="select-form" name="buildingSizeCom" tabindex="2 ">
                                       <option value="0_">Any</option>
@@ -382,7 +426,7 @@
                                  <!-- end -->
                                  <!-- Bath -->
                               </div>
-                              <div class="col-sm-4 col-xs-12 formLeft">
+                              <div class="col-md-5 col-xs-12 formLeft">
                                 <div class="p-2 ">
                                   <select data-placeholder="Land Size" class="select-form" name="landCom" tabindex="2 ">
                                     <option value="0_">Any</option>
@@ -401,7 +445,8 @@
                                 </div>
                     <!-- end -->
                               </div>
-                              <div class="col-sm-4  col-xs-12">
+                              <input type="hidden" name="PropertySortBy" value="DescDate">
+                              <div class="col-md-2  col-xs-12">
                                  <div class="p-2">
                                     <button <?php echo $searchDisable;?> name="searchBtn" id="searchBtn" style="border: 0px solid;cursor: pointer;" type="submit" class="searchAleForm" ><i class="fa fa-search" aria-hidden="true"></i></button>
                                  </div>

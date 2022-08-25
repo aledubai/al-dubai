@@ -194,14 +194,14 @@
                            <div class="row">
                               <label for="ProfilePrimaryNo" class="col-sm-3 control-label">Phone Number  <span class="text-danger">*</span> <i class="fa fa-question-circle" aria-hidden="true"></i> </label>
                               <div class="col-sm-9">
-                                  <input type="text" class="form-control input-sm" name="phone_numbr" id="phone_numbr"  value="<?php echo @$profile_data->phone_numbr;?>">
+                                  <input type="text" class="form-control input-sm" name="phone_numbr" id="phone_numbr" required   value="<?php echo @$profile_data->phone_numbr;?>">
                                      
                               </div>
                            </div>
                         </div>
                         <div class="form-group">
                            <div class="row">
-                              <label for="ProfileSecondaryNo" class="col-sm-3 control-label">Mobile Number <span class="text-danger">*</span></label>
+                              <label for="ProfileSecondaryNo" class="col-sm-3 control-label">Mobile Number </label>
                               <div class="col-sm-9">
                                 <input type="text" class="form-control input-sm" name="mobile_number" id="mobile_number"  value="<?php echo @$profile_data->mobile_number;?>">
                             </div>

@@ -203,187 +203,37 @@ height: 69rem !important;
 
 </style>
 <!-- Style Tag Ends-->
-
-<div class="row" id="searchMobView">
+<?php
+/*$this->load->model('admin/type_model');
+ 
+  $data["purposelist"] = $this->type_model->PurposeList();
+  print_r($data["purposelist"]);*/
+  $ci =& get_instance();
+  $ci->load->model('admin/type_model');
+  $purposelist = $ci->type_model->PurposeList(); 
+?>
+<div class="listing-search" id="searchMobView">
 <!-- form Start here  -->
-   <section class="homelist_bg col-sm-10">
-      <div class="container-fluid wrap-container pt-2 pb-2" style="padding-left: 40px;">
-        <div class="row mb-4">
-          <div class="col-md-12 bg-white radius p-0">
-               <form name="form1" action="<?=base_url()?>propertylist/index" method="GET" id="propertylistForm">
-                <div class="row">
-                  <div class="col-sm-6 col-xs-12">
-                    <div class="row">
-                      <div class="col-sm-4 col-xs-6">
-                  <!-- input serach Bar -->
-                  <input type="text" placeholder="City,Neighbourhood or MLS Number" name="search" class="form-control ale-izba_placeholder inputMobileView" value="<?php if(isset($_GET['search'])){ echo $_GET['search'];}?>" >
-                </div>
-                  <!-- end -->
-                  <!-- min-price -->
-                   <div class="col-sm-4 col-xs-6">
-                  <div class="p-2 ">
-                     <select data-placeholder="Min Price" class="chosen-select form-control inputMobileView" name="minPrice" tabindex="2 ">
-                        <option value=""></option>
-                        <?php 
-                        $option = '';
-                          
-                           for ($i = 0; $i < 12; $i++) {
-                            $startAmount=25000;
-                              $selecteds = '';
-                              if(isset($_GET['minPrice']) && $_GET['minPrice'] ==$startAmount*$i)
-                              {
-                                $selecteds = 'selected';
-                              }
-                               $option .= '<option value="'.$startAmount*$i.'" '.$selecteds .'>'.number_format($startAmount*$i).'</option>';
-                              }
-                            
-                           echo  $option ;
-                        ?>                     
-                     </select>
-                  </div>
-                </div>
-                  <!-- end -->
-                  <!-- unlimited -->
-                   <div class="col-sm-4 col-xs-6">
-                  <div class="p-2 ">
-                     <select data-placeholder="Max Price" class="chosen-select form-control inputMobileView" name="maxPrice" tabindex="2 ">
-                        <option value=""></option>
-
-                        <?php 
-                        $option = '';
-                          
-                           for ($i = 0; $i < 12; $i++) {
-                            $startAmount=250000;
-
-
-                              $selecteds = '';
-                              if(isset($_GET['maxPrice']) && $_GET['maxPrice'] ==$startAmount*$i)
-                              {
-                              $selecteds = 'selected';
-                              }
-                               $option .= '<option value="'.$startAmount*$i.'"  '.$selecteds .'>'.number_format($startAmount*$i).'</option>';
-                           }
-                           echo  $option ;
-                        ?>                     
-                     </select>
-                  </div>
-                </div>
-                  <!-- end -->
-                </div>
-              </div>
-
-
-                  <div class="col-sm-6 col-xs-12">
-                    <div class="row">
-                      <div class="col-sm-4 col-xs-6">
-                  <!-- Bed -->
-                  <div class="p-2 ">
-                     <select data-placeholder="Beds" class="chosen-select form-control inputMobileView" name="bed" tabindex="2 ">
-                        <option value="0_">Beds</option>
-                        <?php 
-                      $option = '';
-                      for ($i = 0; $i < 6; $i++) {
-                         
-                         $selecteds = '';
-                              if(isset($_GET['bed']) && $_GET['bed'] == $i)
-                              {
-                              $selecteds = 'selected';
-                              }
-
-                        $option .= '<option value="'.$i.'_" '.$selecteds .' >'. $i.'</option>';
-                        if($i!==0)
-                        {
-                          $selecteds = '';
-                              if(isset($_GET['bed']) && $_GET['bed'] =="'.$i.'_+")
-                              {
-                              $selecteds = 'selected';
-                              }
-
-                          $option .= '<option value="'.$i.'_+" '.$selecteds .' >'.$i.'+</option>';  
-                        }
-                        
-                      }
-                        echo  $option ;
-                      ?> 
-                        <!-- <option value="1_">1</option>
-                        <option value="1_+">1+</option>
-                        <option value="2_">2</option>
-                        <option value="2_+">2+</option>
-                        <option value="3_">3</option>
-                        <option value="3_+">3+</option>
-                        <option value="4_">4</option>
-                        <option value="4_+">4+</option>
-                        <option value="5_">5</option>
-                        <option value="5_+">5+</option> -->
-                     </select>
-                  </div>
-                </div>
-                  <!-- end -->
-                  <!-- Bath -->
-                      <div class="col-sm-4 col-xs-6">
-                  <div class="p-2 ">
-                     <select data-placeholder="Baths" class="chosen-select form-control inputMobileView" name="bath" tabindex="2 ">
-                        <option value="0_">Baths</option>
-                         <?php 
-                      $option = '';
-                      for ($i = 0; $i < 6; $i++) {
-                         
-                         $selecteds = '';
-                              if(isset($_GET['bath']) && $_GET['bath'] =="'.$i.'_")
-                              {
-                              $selecteds = 'selected';
-                              }
-
-                        $option .= '<option value="'.$i.'_" '.$selecteds .' >'. $i.'</option>';
-                        if($i!==0)
-                        {
-                          $selecteds = '';
-                              if(isset($_GET['bath']) && $_GET['bath'] =="'.$i.'_+")
-                              {
-                              $selecteds = 'selected';
-                              }
-
-                          $option .= '<option value="'.$i.'_+" '.$selecteds .' >'.$i.'+</option>';  
-                        }
-                        
-                      }
-                        echo  $option ;
-                      ?> 
-                        <!-- <option value="1_">1</option>
-                        <option value="1_+">1+</option>
-                        <option value="2_">2</option>
-                        <option value="2_+">2+</option>
-                        <option value="3_">3</option>
-                        <option value="3_+">3+</option>
-                        <option value="4_">4</option>
-                        <option value="4_+">4+</option>
-                        <option value="5_">5</option>
-                        <option value="5_+">5+</option> -->
-                     </select>
-                  </div>
-                </div>
-                  <!-- end -->
-                  <!-- search button  -->
-                      <div class="col-sm-4 col-xs-6">
-                  <div class="p-2">
-                     <button style="border: 0px solid;" type="submit" class="searchAleForm searchMobileView" ><i class="fa fa-search" aria-hidden="true"></i></button>
-                  </div>
-                </div>
-               </div>
-            </div>
-          </form>
-            <!--Form Close Tag-->
-            
-         </div>
+   <section class="homelist_bg">
+      <div class="container-fluid wrap-container pt-2 pb-2">
+         <?php
+            //print_r($bookmarks);
+              $searchDisable ='';
+              if(!empty($recent))
+              {
+                 $recent = $recent[0];
+              if(isset($recent->search) && $recent->search !=='')
+              {
+                $searchDisable =  "disabled";
+              }
+              }
+            ?>
+            <?php include_once "searchForm.php" ?>
+           
       </div>
    </section>
-
-   <section class="col-sm-2">
-     <div class=" col-md-2  list-home ">
-               <button type="button" class="btn bannerBtn3 " id="filterBtn">Filter <i class="fa fa-filter" aria-hidden="true"></i></button>
-            </div>
-   </section>
  </div>
+
 
 <section>
   
@@ -849,7 +699,7 @@ height: 69rem !important;
 
                <!-- <a href="" class="btn bannerBtn3 pull-right " id="myBtn">Filter <i class="fa fa-filter" aria-hidden="true"></i></a> -->
 
-               <button type="button" class="btn bannerBtn3 pull-right" id="filterBtn">Filter<i class="fa fa-filter" aria-hidden="true"></i></button>
+              <!--  <button type="button" class="btn bannerBtn3 pull-right" id="filterBtn">Filter<i class="fa fa-filter" aria-hidden="true"></i></button> -->
 
               
             </div>
@@ -864,14 +714,14 @@ height: 69rem !important;
    <section>
       <div class="container-fluid wrap-container">
          <div class="row mt-4">
-            <div class="col-md-4 aleHeading">
+            <div class="col-md-3 aleHeading">
                <h5>Results: <?php 
 
                echo (isset($property_list['number_list']) ? $property_list['number_list'] : '0');
                 ;
                ?> Listings</h5>
                <span class="sort mt-2">
-                  <h6>Sort By</h6>
+                  <h6>Sort By &nbsp;</h6>
                </span>
                <span>
                   <select data-placeholder="" class="form-control listingBox" name="PropertySortBy" id="PropertySortBy" tabindex="2">
@@ -885,15 +735,22 @@ height: 69rem !important;
             </div>
             <div class="col-md-6 text-center  ">
                <div class="section-title text-center mb-0">
-                  <h1><?php echo (isset($typename) && $typename !=='')?(@$typename.' in '.@$communityname):'Al-eizba Real Estate Listings';?></h1>
+                  <h1 class="list-tit"><?php 
+                  if(isset($str_name) && $str_name !=='')
+                  {
+                    echo $str_name;
+                  }else
+                  {
+                    echo (isset($typename) && $typename !=='')?(@$typename.' in '.@$communityname):'Al-eizba Real Estate Listings';
+                  }
+                  ?></h1>
                </div>
             </div>
-            <div hidden="" class="col-md-4 ">
-               <div class="ml-55 switch_btn pull-right mt-1">
-                  <label class="switch">
-                  <input type="checkbox" checked>
-                  <span class="slider round"></span></label>
-               </div>
+            <div class="col-md-3 ">
+              <div class="filter-btn list-home">
+                <button type="button" class="btn bannerBtn3 " id="filterBtn">Filter <i class="fa fa-filter" aria-hidden="true"></i></button>
+              </div>
+               
             </div>
          </div>
       </div>
@@ -971,11 +828,9 @@ height: 69rem !important;
                   <span class="ale_faci">&nbsp;<?php echo "$value->baths"; ?> <i class="fa fa-bath" aria-hidden="true"></i><br>
                   <span class="ale_pop">Bathrooms</span></span>
                   <!-- <span class="ale_faci ml-5">&nbsp;<?php echo "$value->area"; ?> <i class="fa fa-area-chart" aria-hidden="true"></i></i><br> -->
-                  <span class="ale_faci">
-                     &nbsp;<i class="fa fa-home" aria-hidden="true"></i><br>
-                     <!-- <span class="ale_pop">Area</span></span>  -->  
-                     <span class="ale_pop">Condo</span>
-                  </span>
+                  <span class="ale_faci">&nbsp;0&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Parking</span>
+                        </span>
                </div>
                <!-- <p class="mt-3"><?php echo "$value->landlord"; ?></p> -->
              </div>
@@ -984,17 +839,22 @@ height: 69rem !important;
          </a>
 
            <div class="row m-2 mb-3">
-                    <div class="col-sm-8">
-                      <button type="button contact-by-call" data-toggle="modal" data-target="#PhoneModal" data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>" class="btn btn-primary btn-sm home_meet_btn m-0"> <i class="fa fa-phone" aria-hidden="true"></i> Call</button>
-                      <button type="button contact-by-email" data-toggle="modal" data-target="#emailModal"  data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>"  data-landlord_id="<?php echo $value->landlord_id;?>"  data-comp_name="<?php echo $value->comp_name;?>"  data-comp_img="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>" data-comp_url="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>" class="btn btn-secondary btn-sm home_meet_btn m-0"> <i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</button>  
+                    <div class="col-12 feature-box">
+                      <div class="col-6 butns">  
+                      <button type="button contact-by-call" data-toggle="modal" data-target="#PhoneModal" data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>" class="btn btn-primary btn-sm home_meet_btn m-0 btn-block"> <i class="fa fa-phone" aria-hidden="true"></i> Call</button>
+                      </div>
+
+                       <div class="col-6 butns">
+                      <button type="button contact-by-email" data-toggle="modal" data-target="#emailModal"  data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>"  data-landlord_id="<?php echo $value->landlord_id;?>"  data-comp_name="<?php echo $value->comp_name;?>"  data-comp_img="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>" data-comp_url="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>" class="btn btn-secondary btn-sm home_meet_btn m-0 btn-block"> <i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</button>  
+                   </div>
                      
                       </div>
-                      <div class="col-sm-4">
+                      <!-- <div class="col-sm-4">
                         <a href="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>">
-                          <img src="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>"  style="width:100%;height:60px;background:unset">
+                          <img src="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>"  style="max-width: 50px;background: unset;max-height: 50px;">
                         </a>
                        
-                      </div>
+                      </div> -->
                   </div>
                    </div>
       </div>
@@ -1047,7 +907,7 @@ height: 69rem !important;
 
 <div class="modal fade" id="PhoneModal" tabindex="-1" role="dialog" aria-labelledby="PhoneModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+    <div class="modal-content agent-modal">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1098,12 +958,12 @@ height: 69rem !important;
         var button = $(event.relatedTarget) 
           $('.mobile_number_content').html('');
            var userid =  button.data("userid");
-           var phone =  button.data("phone");
-           var mobile =  button.data("mobile");
+          var phone =  button.data("phone").toString();
+           var mobile =  button.data("mobile").toString();
            console.log(userid,phone,mobile);
       var html_content= '<table class="table ">';
 
-      var html_content= html_content+'<tr><th colspan="2" class="text-center">Contact Details</td></tr>';  
+      var html_content= html_content+' ';  
       if(phone.length >0)
       {
         var href_phone =  phone.replace(" ", "");
@@ -1115,15 +975,16 @@ height: 69rem !important;
         var html_content= html_content+'<tr><th scope="row">Mobile  Number : </th><td><a href="tel:'+href_mobile+'">'+mobile+'</a></td></tr>';  
       }
       
-      var html_content= html_content+'</table>';
+      
       if(phone.length >0 || mobile.length >0)
       {
 
       }else
       {
-          html_content= html_content+'<tr> <td>Not Found</td></tr>'; 
+          var html_content= html_content+'<tr> <td>Not Found</td></tr>'; 
 
       }
+      var html_content= html_content+'</table>';
       $('.mobile_number_content').html(html_content);
       });
     

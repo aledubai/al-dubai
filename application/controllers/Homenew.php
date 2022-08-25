@@ -38,14 +38,13 @@ class Homenew extends CI_Controller
     // Index =============================================================
     public function index()
     {
-      /*$this->isLoggedIn();*/
-      /*$this->isUserLoggedIn();*/
-      // Onload Comon Page Data ============================= 
+       
     	$data = array();
+
       
-      
- 
-       // Define =========================== 
+
+      $data["purposelist"] = $this->type_model->PurposeList();
+      // Define =========================== 
        $data["title"]="Ale-izba";
        $data["file"]="front/homenew";
        $this->load->view('front/header/template',$data);

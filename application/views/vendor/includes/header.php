@@ -170,6 +170,7 @@
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo base_url() ?>vendor/community"><i class="fa fa-circle-o"></i>Community</a></li>
                 <li><a href="<?php echo base_url() ?>vendor/property_type"><i class="fa fa-circle-o"></i>Propert Type</a></li>
+                <li><a href="<?php echo base_url() ?>vendor/query_result"><i class="fa fa-circle-o"></i>Query Result</a></li>
                  
               </ul>
             </li>

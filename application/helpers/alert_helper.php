@@ -19,7 +19,81 @@ if ( ! function_exists('test_method'))
     }   
 }
 
+/*if(!function_exists('propertyWidged'))
+{
+   function propertyWidged($arradasta = array())
+   {
+      $thisvalue  = '<div class="col-md-3 col-xs-12 mainDiv mt-4">
+                <div class="AleBoxes">
+            <a href="'.base_url().'propertydetails/'.$value->slug_url.'" class="propertyDetails">
+              
+                  <?php
+                     if(isset($thumb) and  $thumb!=='')
+                      {
+                      ?>
+                  <img  src="<?php echo base_url();?>uploads/property/<?=$thumb?>" class="img-fluid">
+                  <?php
+                     }else
+                     {
+                         ?>
+                  <img  src="<?php echo base_url();?>uploads/property/default-property.jpg" class="img-fluid">
+                  <?php
+                     }
+                     ?>
+                  <div class="property-cont">
+                  <h3 class="property-title">
+                     <span><strong>AED  <?php echo number_format($value->rent); ?></strong></span>
+                     <span class="pull-right awsomeAle"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                  </h3>
+                  <p>&nbsp;<?=substr($value->EnTitle, 0, 40) ?></p>
+                  <div class="d-flex mt-3 text-center">
+                      <?php if($value->beds)
+                      {
+                        ?>
+                          <span class="ale_faci">&nbsp;<?php echo  $value->beds; ?>&nbsp;&nbsp;<i class="fa fa-bed" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Bedrooms</span>
+                          </span>
+                        <?php
+                      }?>
+                      <?php if($value->baths)
+                      {
+                        ?>
+                        <span class="ale_faci">&nbsp;<?php echo $value->baths; ?>&nbsp;&nbsp;<i class="fa fa-bath" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Bathrooms</span>
+                        </span>
+                        <?php
+                      }?>
 
+                        <span class="ale_faci">&nbsp;0&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Parking</span>
+                        </span>
+                        
+                        
+                  </div>
+                  
+                 
+              </div>
+
+               
+            </a>
+
+             <div class="row m-2 mb-3">
+                    <div class="col-12 feature-box">
+                      <div class="col-6 butns">  
+                      <button type="button contact-by-call" data-toggle="modal" data-target="#PhoneModal" data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>" class="btn btn-primary btn-sm home_meet_btn m-0 btn-block"> <i class="fa fa-phone" aria-hidden="true"></i> Call</button>
+                      </div>
+
+                       <div class="col-6 butns">
+                      <button type="button contact-by-email" data-toggle="modal" data-target="#emailModal"  data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>"  data-landlord_id="<?php echo $value->landlord_id;?>"  data-comp_name="<?php echo $value->comp_name;?>"  data-comp_img="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>" data-comp_url="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>" class="btn btn-secondary btn-sm home_meet_btn m-0 btn-block"> <i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</button>  
+                   </div>
+                     
+                      </div>
+                      
+                  </div>
+                  </div>
+         </div>';
+   }
+}*/
 
 
  if( ! function_exists('get_contact_template') )
