@@ -1535,28 +1535,43 @@
                      <span class="pull-right awsomeAle" style="cursor: pointer;" onclick="bookmarkToggle('asd','dasd','asd','asd')"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                   </h5>
                    <div class="d-flex mt-3 text-center">
-                     <span class="ale_faci">&nbsp;<?php echo  $value->beds; ?>&nbsp;&nbsp;<i class="fa fa-bed" aria-hidden="true"></i><br>
-                     <span class="ale_pop">Bedrooms</span></span>
-                     <span class="ale_faci">&nbsp;<?php echo $value->baths; ?>&nbsp;&nbsp;<i class="fa fa-bath" aria-hidden="true"></i><br>
-                     <span class="ale_pop">Bathrooms</span></span>
-                     <span class="ale_faci">&nbsp;&nbsp;&nbsp;<i class="fa fa-home" aria-hidden="true"></i><br>
-                     <span class="ale_pop">Condo</span></span>   
+                      
+                          <span class="ale_faci">&nbsp;<?php echo  $value->beds; ?>&nbsp;&nbsp;<i class="fa fa-bed" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Bedrooms</span>
+                          </span>
+                        
+                       
+                        <span class="ale_faci">&nbsp;<?php echo $value->baths; ?>&nbsp;&nbsp;<i class="fa fa-bath" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Bathrooms</span>
+                        </span>
+                        
+
+                        <span class="ale_faci">&nbsp;<?php echo $value->park;?>&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Parking</span>
+                        </span>
+                        
+                        
                   </div>
                   <!-- <p class="mt-3"><?php echo $value->landlord; ?></p> -->
                 </div>
                 
-           <div class="row m-2 mb-3">
-                    <div class="col-sm-8">
-                      <button type="button contact-by-call" data-toggle="modal" data-target="#PhoneModal" data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>" class="btn btn-primary btn-sm home_meet_btn m-0"> <i class="fa fa-phone" aria-hidden="true"></i> Call</button>
-                      <button type="button contact-by-email" data-toggle="modal" data-target="#emailModal"  data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>"  data-landlord_id="<?php echo $value->landlord_id;?>"  data-comp_name="<?php echo $value->comp_name;?>"  data-comp_img="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>" data-comp_url="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>" class="btn btn-secondary btn-sm home_meet_btn m-0"> <i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</button>  
+          <div class="row m-2 mb-3">
+                    <div class="col-12 feature-box">
+                      <div class="col-6 butns">  
+                      <button type="button contact-by-call" data-toggle="modal" data-target="#PhoneModal" data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>" class="btn btn-primary btn-sm home_meet_btn m-0 btn-block"> <i class="fa fa-phone" aria-hidden="true"></i> Call</button>
+                      </div>
+
+                       <div class="col-6 butns">
+                      <button type="button contact-by-email" data-toggle="modal" data-target="#emailModal"  data-userid="<?php echo $value->id;?>"  data-phone="<?php echo $value->comp_phone;?>"  data-mobile="<?php echo $value->comp_mobile;?>" data-email="<?php echo $value->comp_email;?>"  data-landlord_id="<?php echo $value->landlord_id;?>"  data-comp_name="<?php echo $value->comp_name;?>"  data-comp_img="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>" data-comp_url="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>" class="btn btn-secondary btn-sm home_meet_btn m-0 btn-block"> <i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</button>  
+                   </div>
                      
                       </div>
-                      <div class="col-sm-4">
+                      <!-- <div class="col-sm-4">
                         <a href="<?php echo base_url()."companies/".$value->comp_url."/".base64_encode($value->comp_userid);?>">
-                          <img src="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>"  style="width:100%;height:60px;background:unset">
+                          <img src="<?php echo base_url().'uploads/vendor/'.$value->comp_profile;?>"  style="max-width: 50px;background: unset;max-height: 50px;">
                         </a>
                        
-                      </div>
+                      </div> -->
                   </div>
                </div>
             
@@ -1573,7 +1588,7 @@
 
 <div class="modal fade" id="PhoneModal" tabindex="-1" role="dialog" aria-labelledby="PhoneModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" style="width: auto;height: auto;padding: 15px;">
+    <div class="modal-content  agent-modal" style="width: auto;height: auto;padding: 15px;">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1620,12 +1635,12 @@
         var button = $(event.relatedTarget) 
           $('.mobile_number_content').html('');
            var userid =  button.data("userid");
-           var phone =  button.data("phone");
-           var mobile =  button.data("mobile");
+          var phone =  button.data("phone").toString();
+           var mobile =  button.data("mobile").toString();
            console.log(userid,phone,mobile);
       var html_content= '<table class="table ">';
 
-      var html_content= html_content+'<tr><th colspan="2" class="text-center">Contact Details</td></tr>';  
+      var html_content= html_content+'';  
       if(phone.length >0)
       {
         var href_phone =  phone.replace(" ", "");

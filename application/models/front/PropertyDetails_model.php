@@ -140,7 +140,7 @@ class PropertyDetails_model extends Base_model
         {
             
              
-                $this->db->select('property.id,property.rent,property.slug_url, property.EnTitle,property.beds,property.baths,property.area,property.landlord,property.type,property.purpose,property.area,property.views,property.year_built,property_img_doc_plan.image,company.image as comp_profile,company.slug_url as comp_url,company.user_id as comp_userid,company.phone_numbr as comp_phone,company.mobile_number as comp_mobile,company.ProfileEmail as comp_email,company.ProfileName as comp_name,landlord.id as landlord_id');
+                $this->db->select('property.id,property.rent,property.slug_url, property.EnTitle,property.beds,property.baths,property.area,property.landlord,property.type,property.purpose,property.area,property.views,property.year_built,property_img_doc_plan.image,company.image as comp_profile,company.slug_url as comp_url,company.user_id as comp_userid,company.phone_numbr as comp_phone,company.mobile_number as comp_mobile,company.ProfileEmail as comp_email,company.ProfileName as comp_name,landlord.id as landlord_id,property.parking as park');
                 $this->db->from($this->table)
             ->join('property_img_doc_plan', 'property_img_doc_plan.property_id = property.id', 'left')
             ->join('setting_profile as company', 'company.user_id = property.user_id', 'left')
@@ -165,7 +165,7 @@ class PropertyDetails_model extends Base_model
         {
             
              
-                $this->db->select('property.id,property.rent,property.slug_url, property.EnTitle,property.beds,property.baths,property.area,property.landlord,property.type,property.purpose,property.area,property.views,property.year_built,property_img_doc_plan.image,company.image as comp_profile,company.slug_url as comp_url,company.user_id as comp_userid,company.phone_numbr as comp_phone,company.mobile_number as comp_mobile,company.ProfileEmail as comp_email,company.ProfileName as comp_name,landlord.id as landlord_id');
+                $this->db->select('property.id,property.rent,property.slug_url, property.EnTitle,property.beds,property.baths,property.area,property.landlord,property.type,property.purpose,property.area,property.views,property.year_built,property_img_doc_plan.image,company.image as comp_profile,company.slug_url as comp_url,company.user_id as comp_userid,company.phone_numbr as comp_phone,company.mobile_number as comp_mobile,company.ProfileEmail as comp_email,company.ProfileName as comp_name,landlord.id as landlord_id,property.parking as park');
                 $this->db->from($this->table)
             ->join('property_img_doc_plan', 'property_img_doc_plan.property_id = property.id', 'left')
             ->join('setting_profile as company', 'company.user_id = property.user_id', 'left')
@@ -190,7 +190,7 @@ class PropertyDetails_model extends Base_model
         {
             
              
-                $this->db->select('property.id,property.rent,property.slug_url, property.EnTitle,property.beds,property.baths,property.area,property.landlord,property.type,property.purpose,property.area,property.views,property.year_built,property_img_doc_plan.image,company.image as comp_profile,company.slug_url as comp_url,company.user_id as comp_userid,company.phone_numbr as comp_phone,company.mobile_number as comp_mobile,company.ProfileEmail as comp_email,company.ProfileName as comp_name,landlord.id as landlord_id');
+                $this->db->select('property.id,property.rent,property.slug_url, property.EnTitle,property.beds,property.baths,property.area,property.landlord,property.type,property.purpose,property.area,property.views,property.year_built,property_img_doc_plan.image,company.image as comp_profile,company.slug_url as comp_url,company.user_id as comp_userid,company.phone_numbr as comp_phone,company.mobile_number as comp_mobile,company.ProfileEmail as comp_email,company.ProfileName as comp_name,landlord.id as landlord_id,property.parking as park');
                 $this->db->from($this->table)
             ->join('property_img_doc_plan', 'property_img_doc_plan.property_id = property.id', 'left')
             ->join('setting_profile as company', 'company.user_id = property.user_id', 'left')

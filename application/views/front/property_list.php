@@ -820,18 +820,27 @@ height: 69rem !important;
                   <span><strong>AED <?php echo number_format($value->rent); ?></strong></span>
                   <span class="pull-right awsomeAle"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                </h5>
-               <p><?php     echo $new_string =  mb_strimwidth($value->EnTitle.", ".$value->location, 0, 45, "..");
- /*echo "$value->EnTitle"; echo "$value->location"*/?></p>
-               <div class="d-flex mt-3 text-center">
-                  <span class="ale_faci">&nbsp;<?php echo "$value->beds"; ?> <i class="fa fa-bed" aria-hidden="true"></i><br>
-                  <span class="ale_pop">Bedrooms</span></span>
-                  <span class="ale_faci">&nbsp;<?php echo "$value->baths"; ?> <i class="fa fa-bath" aria-hidden="true"></i><br>
-                  <span class="ale_pop">Bathrooms</span></span>
-                  <!-- <span class="ale_faci ml-5">&nbsp;<?php echo "$value->area"; ?> <i class="fa fa-area-chart" aria-hidden="true"></i></i><br> -->
-                  <span class="ale_faci">&nbsp;0&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
+               <p><?php     echo $new_string =  mb_strimwidth(ucwords($value->EnTitle.", ".$value->location), 0, 45, "..");
+  ?></p>
+                   <div class="d-flex mt-3 text-center">
+                      
+                          <span class="ale_faci">&nbsp;<?php echo  $value->beds; ?>&nbsp;&nbsp;<i class="fa fa-bed" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Bedrooms</span>
+                          </span>
+                        
+                       
+                        <span class="ale_faci">&nbsp;<?php echo $value->baths; ?>&nbsp;&nbsp;<i class="fa fa-bath" aria-hidden="true"></i><br>
+                            <span class="ale_pop">Bathrooms</span>
+                        </span>
+                        
+
+                        <span class="ale_faci">&nbsp;<?php echo $value->park;?>&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
                             <span class="ale_pop">Parking</span>
                         </span>
-               </div>
+                        
+                        
+                  </div>
+                  
                <!-- <p class="mt-3"><?php echo "$value->landlord"; ?></p> -->
              </div>
                 

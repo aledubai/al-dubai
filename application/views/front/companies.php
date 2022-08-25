@@ -115,8 +115,9 @@
                      <span class="ale_pop">Bedrooms</span></span>
                      <span class="ale_faci ">&nbsp;<?php echo $value->baths; ?>&nbsp;&nbsp;<i class="fa fa-bath" aria-hidden="true"></i><br>
                      <span class="ale_pop">Bathrooms</span></span>
-                    <span class="ale_faci">&nbsp;0&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
+                    <span class="ale_faci">&nbsp;<?php echo $value->park;?>&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
                             <span class="ale_pop">Parking</span>
+                        </span>
                         </span>  
                   </div>
 

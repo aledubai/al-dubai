@@ -339,7 +339,7 @@ class PropertyList_model extends Base_model
 
             //Search Starts
             if($action == 'getList'){
-                $this->db->select('property.id,property.EnTitle,property.slug_url,property.location,property.rent,property.beds,property.baths,property.area,property.landlord,property.type,property.purpose,property.area,property.views,property.year_built,property_img_doc_plan.image,company.image as comp_profile,company.slug_url as comp_url,company.user_id as comp_userid,company.phone_numbr as comp_phone,company.mobile_number as comp_mobile,company.ProfileEmail as comp_email,company.ProfileName as comp_name,landlord.id as landlord_id');
+                $this->db->select('property.id,property.EnTitle,property.slug_url,property.location,property.rent,property.beds,property.baths,property.area,property.landlord,property.type,property.purpose,property.area,property.views,property.year_built,property_img_doc_plan.image,company.image as comp_profile,company.slug_url as comp_url,company.user_id as comp_userid,company.phone_numbr as comp_phone,company.mobile_number as comp_mobile,company.ProfileEmail as comp_email,company.ProfileName as comp_name,landlord.id as landlord_id,property.parking as park');
             }
             $this->db->from($this->table)
             ->join('property_img_doc_plan', 'property_img_doc_plan.property_id = property.id', 'left')

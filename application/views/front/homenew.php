@@ -234,7 +234,7 @@ function clicked()
                  $ttitle = str_replace(' ', '-', $ttitle);
                  $ttitle = str_replace(',', '', $ttitle); 
                  $arra_data = array();
-                 
+                  
                  ///$properydatasingle = propertyWidged($arra_data);
                ?> 
          <div class="col-md-3 col-xs-12 mainDiv mt-4">
@@ -259,26 +259,20 @@ function clicked()
                      <span><strong>AED  <?php echo number_format($value->rent); ?></strong></span>
                      <span class="pull-right awsomeAle"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                   </h3>
-                  <p>&nbsp;<?=substr($value->EnTitle, 0, 40) ?></p>
+                  <p>&nbsp;<?=substr(ucwords($value->EnTitle), 0, 40) ?></p>
                   <div class="d-flex mt-3 text-center">
-                      <?php if($value->beds)
-                      {
-                        ?>
+                      
                           <span class="ale_faci">&nbsp;<?php echo  $value->beds; ?>&nbsp;&nbsp;<i class="fa fa-bed" aria-hidden="true"></i><br>
                             <span class="ale_pop">Bedrooms</span>
                           </span>
-                        <?php
-                      }?>
-                      <?php if($value->baths)
-                      {
-                        ?>
+                        
+                       
                         <span class="ale_faci">&nbsp;<?php echo $value->baths; ?>&nbsp;&nbsp;<i class="fa fa-bath" aria-hidden="true"></i><br>
                             <span class="ale_pop">Bathrooms</span>
                         </span>
-                        <?php
-                      }?>
+                        
 
-                        <span class="ale_faci">&nbsp;0&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
+                        <span class="ale_faci">&nbsp;<?php echo $value->park;?>&nbsp;&nbsp;<i class="fa fa-product-hunt" aria-hidden="true"></i><br>
                             <span class="ale_pop">Parking</span>
                         </span>
                         
