@@ -164,7 +164,7 @@
    #navbar-example2 li {
    display: block;
    float: left;
-   margin-right: 6px;
+   margin: 8px;
    cursor:pointer;
    }
    img {
@@ -1302,7 +1302,7 @@
                <div>
                   <div  >
                      <!--Calculator Row Starts-->
-                     <div class="row p-4">
+                     <div class="row">
                         <!--Calculator First Column Starts-->
                         <div class="col-sm-7 col-md-7  col-xs-6 ">
                            <!--Calculator Inner Content Row Starts-->

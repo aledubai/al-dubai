@@ -162,13 +162,21 @@
       right: 25px;
     }
   } 
-
-/* @media (max-width: 667px) {
   .row {
-    margin-right: 0;
-    margin-left: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+ @media (max-width: 767px) {
+  .container-fluid {
+     padding-right: 5px; 
+     padding-left: 5px; 
+}
 } 
-} */
   
 </style>
 
