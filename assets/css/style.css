@@ -212,6 +212,20 @@ input[type=email]{
     padding: 1rem 0;
     font-size: 12px;
 }
+.searchAleForm{width: 100% !important;}
+.outer_home {
+    padding: 30px 20px !important;
+}
+.VideoIcon .verycenter {left: 28%;}
+#carouselExampleControls .carousel-item img {
+    height: auto !important;}
+    .modal-content {
+    height: auto !important;
+}
+.modal-content{width: 100% !important;}
+.carousel-item img {
+    height: auto !important;
+}
 }
     /*=====================end=================================*/
 

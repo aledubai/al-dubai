@@ -163,12 +163,12 @@
     }
   } 
 
- @media (max-width: 667px) {
+/* @media (max-width: 667px) {
   .row {
     margin-right: 0;
     margin-left: 0;
 } 
-} 
+} */
   
 </style>
 
