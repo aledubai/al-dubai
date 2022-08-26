@@ -1,5 +1,6 @@
  <?php
       $salutiaon = '';
+      $vendor_name = '';
          
          $company_detail  ='';
 
@@ -9,9 +10,9 @@
       if(isset($company_details->ProfileName) && $company_details->ProfileName !=='')
         {  
             $company_detail="<a href='".base_url()."companies/".$company_details->slug_url."/".base64_encode($company_details->user_id)."'>";
-            $company_detail.="<img style='width:20%;' src='".base_url()."uploads/vendor/".@$company_details->image."'   >";
-            $company_detail.=$company_details->ProfileName;
-            $company_detail.="</a>";
+            $company_detail.="<img   src='".base_url()."uploads/vendor/".@$company_details->image."'   >";
+             $company_detail.="</a>";
+            $vendor_name = $company_details->ProfileName;
       }
 
       if(isset($property_landlord->Salutation) && $property_landlord->Salutation>0)
@@ -24,24 +25,48 @@
 
       ?>
            
-<div class="mt-1 text-center">
+
 
   
-   <?=$company_detail;?>
+   <!-- <?=$company_detail;?> -->
+   <div class="agent-img-detail">
+     <?=$company_detail;?>
+   </div>
+ 
+<?php
+ 
+   if(strlen($vendor_name) >0)
+   {
+      ?>
+<div class="mt-1 text-center">
+   
+   <p class="mb-0 text-center">&nbsp;&nbsp;Vendor:<strong>&nbsp;<?=$vendor_name;?></strong></p>
 </div>
-<div class="mt-1 text-center">
-
+      <?php
+   }
+?>
   
+<?php
+ 
+   if(strlen($fullname) >2)
+   {
+      ?>
+<div class="mt-1 text-center">
+   
    <p class="mb-0 text-center">&nbsp;&nbsp;AGENT NAME:<strong>&nbsp;<?=$fullname;?></strong></p>
 </div>
-<hr class="mt-1 mb-1" >
-<div class="text-center">
+      <?php
+   }
+?>
+
+
+<div class="view-property-btn">
    <a href="<?php echo base_url();?>propertylist" class="text-success">
-      <p class="mb-0"><strong>VIEW ALL PROPERTIES&nbsp;&nbsp;></strong></p>
+      <button type="button" class="btn btn-default btn-xs">VIEW ALL PROPERTIES</button>     
    </a>
 </div>
-<hr class="mt-1 mb-1">
-<div class="text-dark">
+<hr class="mt-2" >
+<div class="text-dark details-form">
    <div class="row">
       <div class="col-sm-12">
          <span class="error_message" ></span>

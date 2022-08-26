@@ -101,7 +101,8 @@
    #agent_form1  .contact_mobile,
    #agent_form1  .contact_email
    {
-    font-size: 16px   !important ;
+    font-size: 14px   !important ;
+    text-transform: capitalize;
 } 
    .form-bottom
    {
@@ -425,7 +426,7 @@
                   <span class="sr-only">Next</span>
                   </a>
                </div>
-               <div class="row" style="position: absolute;bottom: 10px;left: 30px;">
+               <div class="row" style="position: absolute;bottom: 35px;left: 20px;">
                   <div class="col-sm-12 pt-2 pb-2">
                      <button type='button' id="show_map" class="btn btn-info btn-sm " data-toggle="modal" data-target=".bd-popup-modal-lg"><i class="fas fa-map-marked-alt" aria-hidden="true"></i>
                      &nbsp;Map</button>

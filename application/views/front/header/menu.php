@@ -163,166 +163,158 @@
     }
   } 
 
-
-   
-  
+ @media (max-width: 667px) {
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+} 
+} 
   
 </style>
- 
-   <div class="mycontainer">
-      <div class="row justify-content-between p-2" style="background-color: #044f53">
-		<div class="col-6">
-		   <a href="#" id="language" class="hormenu_a">
-                              <span id="w3google-translater" >
-                                 <!--  Add a <div> element with the id "google_translate_element" -->
-                                 <div id="google_translate_element"> </div>
-                                 <script type="text/javascript">
-                                    function googleTranslateElementInit() {
-                                    new google.translate.TranslateElement({pageLanguage: 'en' ,includedLanguages : 'ar,en'}, 'google_translate_element');
-                                    }
-                                 </script>
-                                 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                              </span>
-                           </a>
-		</div>
-		<div class="col-6">
-		   <ul class="navbar-nav ml-auto aleizba_li mr-5">
-			 <?php
-                           /*echo "<pre>";
-                           print_r($_SESSION);
-                           echo "</pre>";*/
-                           if($this->session->userdata('isUserLoggedIn') || $this->session->userdata('isVendorLoggedIn'))
-                           {
+
+<div class="mycontainer">
+   <div class="row" style="background-color: #044f53;">
+      <div class="col-6">
+         <a href="#" id="language" class="hormenu_a">
+            <span id="w3google-translater" >
+               <div id="google_translate_element"> </div>
+               <script type="text/javascript">
+                  function googleTranslateElementInit() {
+                  new google.translate.TranslateElement({pageLanguage: 'en' ,includedLanguages : 'ar,en'}, 'google_translate_element');
+                  }
+               </script>
+               <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            </span>
+         </a>
+      </div>
+      <div class="col-6">
+         <ul class="navbar-nav ml-auto aleizba_li mr-5">
+            <?php
+               
+               if($this->session->userdata('isUserLoggedIn') || $this->session->userdata('isVendorLoggedIn'))
+               {
+               ?>
+            <li class="text-white text-right cursor_pointer">
+               
+               <div class="dropdown">
+                  <button class="btn btn-sm tn-secondary dropdown-toggle menu-bg text-white" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                     <?php
+                        if($this->session->userdata('isUserLoggedIn'))
+                        {
+                          ?>
+                     <a class="dropdown-item" href="<?=base_url('/userVendor')?>">Manage Account</a>
+                     <?php
+                        }else if($this->session->userdata('isVendorLoggedIn'))
+                        {
                            ?>
-                        <li class="text-white text-right cursor_pointer">
-
-
-                          <!-- Small button groups (default and split) -->
-                           <div class="dropdown">
-                            <button class="btn btn-sm tn-secondary dropdown-toggle menu-bg text-white" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <?php
-                                if($this->session->userdata('isUserLoggedIn'))
-                                {
-                                  ?>
-                                    <a class="dropdown-item" href="<?=base_url('/userVendor')?>">Manage Account</a>
-                                  <?php
-                                }else if($this->session->userdata('isVendorLoggedIn'))
-                                {
-                                   ?>
-                                    <a class="dropdown-item" href="<?=base_url('/vendor')?>">Manage Account</a>
-                                  <?php
-                                }
-                              ?>
-                               
-                              <a class="dropdown-item" href="<?=base_url()?>Homenew/logout" onclick="return confirm('Are You Sure You Want To Log Out! ')" class="text-white"><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a>
-                            </div>
-                          </div>
-                        </li>
-                        <?php
-                           }else
-                           {
-                               ?>
-                        <li class="text-white text-right cursor_pointer" name="myBtn" id="myBtn" ><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;Log In</li>
-
-                      </ul>
-					  <div id="myModal" class="modal txt menu_login_modal">
-                          <div class="modal-content1" id="modalLog">
-                            <span class="close" onclick="close_modal()" style="margin-top: 15px;">&times;</span>
-                            <form action="<?php echo base_url(); ?>homenew/loginMe" method="post" class="userLogin">
-                              <div class="row">
-                                <!-- Success Msg Code-->
-                                <div class="col-sm-12">
-                                  <!-- Flashdata Code-->
-                                  <div class="text-center text-danger">
-                                    <?php echo validation_errors(); ?>
-                                      
-                                  </div>
-                                  <?php
-                                     $this->load->helper('form');
-                                     $error = $this->session->flashdata('errorLogin');
-                                     if($error)
-                                     {
-                                     ?>
-
-                                      <script type="text/javascript">
-                                        var modal = document.getElementById("myModal");
-                                        modal.style.display = "block";
-                                      </script>
-                                  <div class="alert alert-danger alert-dismissable">
-                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                     <?php echo $this->session->flashdata('errorLogin'); ?>                    
-                                  </div>
-                                  <?php } ?>
-                                  <?php  
-                                     $success = $this->session->flashdata('success');
-                                     if($success)
-                                     {
-                                     ?>
-                                  <div class="alert alert-success alert-dismissable">
-                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                     <?php echo $this->session->flashdata('success'); ?>
-                                  </div>
-                                  <?php } ?>
-                                  <!-- Flashdata Code Ends-->
-                                </div>
-                                <!-- Success Msg Code-->
-                              </div>
-                              <div class="row">
-                                <div class="col-sm-12">
-                                  <div class="text-center py-2">
-                                    <a href="<?php echo base_url();?>">
-                                    <img src="<?php echo base_url();?>assets/images/LOGO-2.png" class="" style="width: 60%;"></a>
-                                  </div>
-                                  <div class="text-center my-1">
-                                    <input type="Email" name="email" id="email" class="form-control" placeholder="Email*" required="required">
-                                  </div>
-                                  <div class="my-2">
-                                  
-                                  <div class="input-group">
-                                        <input type="password" name="password" id="password" class="form-control" placeholder="password*" required="required">
-                                      <div class="input-group-append">
-                                         <i id="login_eye" onclick="password_toggle('password','login_eye')" class="btn btn-success fa fa-eye "></i> 
-                                        
-                                      </div>
-                                  </div>
-                                  </div>
-                                  <div class="my-2">
-                                    <button type="Submit" class="btn btn-success logInBtn" id="logInBtn">Log In</button>
-                                  </div>
-                                  <div class="my-2 smallTxt">
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <small>
-                                          <input type="checkbox" checked name="rememberMe" value="rememberMe"> &nbsp; Remember Me
-                                        </small>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <small style="float: right;">Forgot Password?</small>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="my-2 text-center">Are you new to Al-Eizba?</div>
-                                  <div class="my-3">
-                                    <button type="button" class="memberBtn"><a href="<?php echo base_url();?>sign_Up" style="color: white">Become a free member</a></button>
-                                  </div>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
+                     <a class="dropdown-item" href="<?=base_url('/vendor')?>">Manage Account</a>
+                     <?php
+                        }
+                        ?>
+                     <a class="dropdown-item text-white" href="<?=base_url()?>Homenew/logout" onclick="return confirm('Are You Sure You Want To Log Out! ')"   ><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a>
+                  </div>
+               </div>
+            </li>
+            <?php
+               }else
+               {
+                   ?>
+            <li class="text-white text-right cursor_pointer" name="myBtn" id="myBtn" ><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;Log In</li>
+         </ul>
+         <div id="myModal" class="modal txt menu_login_modal">
+            <div class="modal-content1" id="modalLog">
+               <span class="close" onclick="close_modal()" style="margin-top: 15px;">&times;</span>
+               <form action="<?php echo base_url(); ?>homenew/loginMe" method="post" class="userLogin">
+                  <div class="row">
+                    
+                     <div class="col-sm-12">
+                       
+                        <div class="text-center text-danger">
+                           <?php echo validation_errors(); ?>
                         </div>
-                    </div>
-
-                        
                         <?php
-                           }
-                           
+                           $this->load->helper('form');
+                           $error = $this->session->flashdata('errorLogin');
+                           if($error)
+                           {
                            ?>
-		   </ul>
-		</div>
-	  </div>
+                        <script type="text/javascript">
+                           var modal = document.getElementById("myModal");
+                           modal.style.display = "block";
+                        </script>
+                        <div class="alert alert-danger alert-dismissable">
+                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                           <?php echo $this->session->flashdata('errorLogin'); ?>                    
+                        </div>
+                        <?php } ?>
+                        <?php  
+                           $success = $this->session->flashdata('success');
+                           if($success)
+                           {
+                           ?>
+                        <div class="alert alert-success alert-dismissable">
+                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                           <?php echo $this->session->flashdata('success'); ?>
+                        </div>
+                        <?php } ?>
+                        
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-12">
+                        <div class="text-center py-2">
+                           <a href="<?php echo base_url();?>">
+                           <img src="<?php echo base_url();?>assets/images/LOGO-2.png" class="" style="width: 60%;"></a>
+                        </div>
+                        <div class="text-center my-1">
+                           <input type="Email" name="email" id="email" class="form-control" placeholder="Email*" required="required">
+                        </div>
+                        <div class="my-2">
+                           <div class="input-group">
+                              <input type="password" name="password" id="password" class="form-control" placeholder="password*" required="required">
+                              <div class="input-group-append">
+                                 <i id="login_eye" onclick="password_toggle('password','login_eye')" class="btn btn-success fa fa-eye "></i> 
+                              </div>
+                           </div>
+                        </div>
+                        <div class="my-2">
+                           <button type="Submit" class="btn btn-success logInBtn" id="logInBtn">Log In</button>
+                        </div>
+                        <div class="my-2 smallTxt">
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <small>
+                                 <input type="checkbox" checked name="rememberMe" value="rememberMe"> &nbsp; Remember Me
+                                 </small>
+                              </div>
+                              <div class="col-md-6">
+                                 <small style="float: right;">Forgot Password?</small>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="my-2 text-center">Are you new to Al-Eizba?</div>
+                        <div class="my-3">
+                           <button type="button" class="memberBtn"><a href="<?php echo base_url();?>sign_Up" style="color: white">Become a free member</a></button>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <?php
+         }
+         
+         ?>
+   </div>
+</div>
+ 
+
+
+
 	  <section>
    <nav class="navbar navbar-expand-lg navbar-light ale-dark justify-content-between">
       <a href="<?=base_url();?>">

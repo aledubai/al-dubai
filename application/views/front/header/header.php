@@ -52,6 +52,9 @@
 
  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- wos css-->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/developer/wow_js/css/libs/animate.css">

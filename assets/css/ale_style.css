@@ -220,14 +220,17 @@ top: -60px;
 
 #myTab1 {
     position: absolute;
-    top: -29px;
+    top: -18px;
     left: 16px;
 }
 
 .myTab  {
   text-align: center;
 }
-
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border-color: #00a859;
+    background: #00a859;
+}
 
 
 
@@ -884,7 +887,7 @@ table.blueTable tfoot .links a{
 }
 
 .AleAgent img {
-	position: absolute;
+	/*position: absolute;*/
 }
 
 .bg-white {

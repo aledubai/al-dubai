@@ -11,6 +11,25 @@
 
 
    }
+   /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #25534a; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00a859; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f0f0f1; 
+}
 </style>
 <div class="row">
                 <div class=" offset-sm-3 col-sm-6">
@@ -45,7 +64,6 @@
          <div class="col-md-12 text-center text-white">
             <h1 class="Bannertext"><strong>Search 189,197 listings from trusted Al-Eizba</strong></h1>
          </div>
-         <!-- padMY -->
       </div>
       <div class="container-fluid my-5">
          <div class="row">
